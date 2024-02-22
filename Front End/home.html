@@ -52,19 +52,20 @@
         <i class="fa-solid fa-xmark"></i>
       </span>
 
+      <!-- LOGIN -->
       <div class="form-box login">
         <h2>Login</h2>
-        <form method="get" action="#"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form method="get" action="../Middle End/main.php"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
-            <input type="email" required />
+            <input type="email" required name="email"/>
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i class="fa-sharp fa-solid fa-key"></i></span>
-            <input type="password" required />
+            <input type="password" required name="password"/>
             <label>Password</label>
           </div>
           <div class="remember-forgot">
@@ -81,24 +82,25 @@
         </form>
       </div>
 
+      <!-- SIGN UP -->
       <div class="form-box register">
         <h2>Sign Up</h2>
-        <form method="post" action="#"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form method="post" action="../Middle End/main.php"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
           <div class="input-box">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
-            <input type="text" required />
+            <input type="text" required name="username_R"/> <!-- Username Register -->
             <label>Username</label>
           </div>
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
-            <input type="email" required />
+            <input type="email" required name="email_R"/> <!-- Email Register -->
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i class="fa-sharp fa-solid fa-key"></i></span>
-            <input type="password" required />
+            <input type="password" required name="password_R"/> <!-- Password Register -->
             <label>Password</label>
           </div>
           <div class="remember-forgot">
@@ -115,6 +117,18 @@
           </div>
         </form>
       </div>
+    </div>
+
+    <div class="wrapper">
+      <span class="icon-close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+
+      <div class="form-box register">
+        <p>Hello There</p>
+      </div>
+
+
     </div>
 
     <!-- FOOTER -->
@@ -160,6 +174,9 @@
       </div>
     </div>
 
+    <!-- Need to implement a new pop up window that will be activated when a json file about invalid data
+         is sent. In that case, the pop up window will just include a message saying "invalid email and 
+         password" for example -->
     <script src="home.js"></script>
   </body>
 </html>
