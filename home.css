@@ -12,7 +12,11 @@ body {
 }
 
 .wrapper{
-  position: relative;
+  z-index: 999;
+  top: 25%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+  position: fixed;
   width: 380px;
   height: 440px;
   background: transparent;
@@ -23,9 +27,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  margin-top: 110px;
-  margin-left: 600px auto;
   overflow: hidden;
   transform: scale(0);
   transition: transform .5s ease, height .2s ease;
