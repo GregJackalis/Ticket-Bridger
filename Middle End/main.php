@@ -1,4 +1,7 @@
 <?php
+    // error_reporting(0);
+    ini_set('display_errors', 1);
+
     include 'functions.php';
 
     $username = $email = $password = "";
@@ -22,42 +25,55 @@
         $password = $_POST["password_R"]; // the password's data doesn't need to be in the setup_data because it might affect the
                                           // actual value of the it.
 
-        if (checkingEmail($email)) {
-            //  insert email to a variable that will be inserted to the database (if all the checks for each field are true)
-            $emailCheck = true;
-        } else {
-            $response['errors']['email'] = 'Invalid Email Given';
-        }
-
-        if (checkingUsername($username)) {
-            // insert username to a variable just like the email..
-            $usernameCheck = true;
-        } else {
-            $response['errors']['username'] = 'Invalid Username Given';
-        }
-
-        if (checkingPassword($password)) {
-            // encrypt the password with one or more different encryption algorithms (with the usage of secret keys stored in a 
-            // .env file), and then put it in the variable that the username and password are already in.
-            $passwordCheck = true;
-        } else {
-            $response['errors']['password'] = 'Invalid Password Given';
-        }
+        $emailCheck = checkingEmail($email);
+        $usernameCheck = checkingUsername($username);
+        $passwordCheck = checkingPassword($password);
 
         if ($emailCheck && $usernameCheck && $passwordCheck) {
-            // if all of them are true then it means that they passed the check for valid information give, and the info is ready
-            // to be inserted to the databasd
+            //  1st) encrypt the password with one or more different encryption algorithms (with the usage of secret keys 
+            //       stored in a .env file), and then put it in the variable that the username and password are already in.
 
-            // need to insert the "INSERT..." query to insert all email, username, and password
-            
+            //  2nd) insert email, username, and password to a variable that will be 
+            //  inserted to the database (if all the checks for each field are true)
+            //  need to use the "INSERT..." query to insert all email, username, and password
+
+            $response = array(
+                "status" => "success",
+                "message" => "Credentials have been Validated",
+            );
+
         } else {
-            // in case one of them is false, then it means that there was a problem with the data given (it was not valid)
+            if (!$emailCheck) {
+                $response['errors']['email'] = 'Invalid Email Given';
+            }
 
-            // Set the appropriate Content-Type header for JSON
-            header('Content-Type: application/json');
+            if (!$usernameCheck) {
+                $response['errors']['username'] = 'Invalid Username Given';
+            }
 
-            // Output the JSON response containing information about which credential was invalid
-            echo json_encode($response);
+            if (!$passwordCheck) {
+                $response['errors']['password'] = 'Invalid Password Given';
+            }
         }
+
+        // header('Content-Type: application/json');
+
+        // file_put_contents('main_php_debug.txt', json_encode($response));
+
+        // Output the JSON response containing information about which credential was invalid
+        // echo json_encode($response);
+
+        $html_response = "<h2>Errors while Signing up!</h2><br>";
+        $errors = $response['errors'];
+
+        foreach ($errors as $error) {
+            if ($error !== null) {
+                $html_response .= "<p>$error</p><br>";
+            }
+        }
+
+        echo $html_response;
+
+
     }
 ?>

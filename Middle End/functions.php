@@ -37,10 +37,9 @@
         $specialChars = preg_match('@[^\w]@', $password_value);
 
         if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password_value) < 8) {
-            echo 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
+            // 'Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.';
             return false;
         } else {
-            echo 'Strong password.';
             return true;
         }
     }

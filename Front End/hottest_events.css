@@ -1,0 +1,159 @@
+/** LATEST NEWS AND ALBUMS PAGE**/
+.news_and_albums {
+    /* Fallback for older browsers */
+    background-color: #252525;
+    /* Gradient */
+    background-image: linear-gradient(to bottom, 
+        #602080,
+        #513299,
+        #4243b2,
+        #2947b1,
+        #10419b,
+        #0a3c7a,
+        #032944
+    );
+    /* For browsers that do not support gradients */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#602080', endColorstr='#006bb8', GradientType=0);
+}
+
+/** Lastestnews **/
+ .Lastestnews {
+     padding:90px 0px;
+}
+ .Lastestnews .titlepage {
+     text-align: center;
+     margin-bottom: 60px;
+}
+ .Lastestnews .titlepage h2 {
+     font-size: 60px;
+     line-height: 62px;
+     color:#f6d902;
+     font-weight: 500;
+     text-transform: uppercase;
+}
+ .Lastestnews .titlepage span {
+     color: #f6d902;
+     font-size: 17px;
+     line-height: 23px;
+}
+ .Lastestnews .news-box {
+     background:#fff;
+     box-shadow: #ddd 0px 0px 8px 4px;
+}
+ .Lastestnews .news-box figure {
+     margin: 0;
+}
+ .Lastestnews .news-box figure img {
+     width: 100%;
+}
+ .Lastestnews .news-box h3 {
+     font-size: 22px;
+     line-height: 24px;
+     color: #060606;
+     font-weight: 500;
+     padding: 20px 20px 4px 20px;
+}
+ .Lastestnews .news-box span {
+     color: #e61414;
+     margin-left: 20px;
+}
+ .Lastestnews .news-box p{
+     color: #7b7a7a;
+     font-size:16px;
+     line-height: 23px;
+     padding: 7px 20px 20px 20px;
+}
+/** Lastestnews **/
+ .Albums {
+     margin-bottom: 90px;
+}
+ .Albums .titlepage {
+     text-align: center;
+     margin-bottom: 60px;
+}
+ .Albums .titlepage h2 {
+     font-size: 60px;
+     line-height: 62px;
+     color:#f6d902;
+     font-weight: 500;
+     text-transform: uppercase;
+}
+ .Albums .titlepage span {
+     color: #f6d902;
+     font-size: 17px;
+     line-height: 23px;
+}
+ .margin {
+    margin-bottom: 30px;
+}
+ .Albums .Albums-box figure {
+     margin: 0px;
+}
+ .Albums .Albums-box figure img {
+     width: 100%;
+}
+ .green {
+     background-color: #6fb936;
+}
+ .Albums .Albums-box .hoverle {
+     display: none;
+}
+ .Albums .Albums-box .hoverle a {
+     padding: 5px 30px;
+     color: #0f69c6;
+}
+ .Albums .Albums-box:hover .hoverle {
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     background: #f71717b3;
+     align-items: center;
+     margin: 0 15px;
+}
+ .Albums .Albums-box:hover .hoverle a {
+     background: transparent;
+     padding: 5px 30px;
+     color: #fff;
+}
+ #demo {
+     height: 100%;
+     position: relative;
+     overflow: hidden;
+}
+ .thumb {
+     margin-bottom: 30px;
+}
+ .green {
+     background-color: #6fb936;
+}
+ .page-top {
+     margin-top: 85px;
+}
+ img.zoom {
+     width: 100%;
+     object-fit: cover;
+     -webkit-transition: all .3s ease-in-out;
+     -moz-transition: all .3s ease-in-out;
+     -o-transition: all .3s ease-in-out;
+     -ms-transition: all .3s ease-in-out;
+}
+ .transition {
+     -webkit-transform: scale(1.2);
+     -moz-transform: scale(1.2);
+     -o-transform: scale(1.2);
+     transform: scale(1.2);
+}
+ .modal-header {
+     border-bottom: none;
+}
+ .modal-title {
+     color: #000;
+}
+ .modal-footer {
+     display: none;
+}
