@@ -21,8 +21,14 @@
     />
     <link rel="stylesheet" href="home.css" />
     <title>Ticket Bridger</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <!-- Script added so that the AJAX web techniques can be used. This can be used in order for HTML elements to be made
+         straight from PHP files -->
+
   </head>
   <body>
+    <!-- NAVIGATION BAR -->
     <header>
       <div class="navBar">
         <div class="logo">
@@ -49,6 +55,7 @@
       </div>
     </header>
 
+    <!-- LOGIN & SIGN UP POP-UP WINDOWS -->
     <div class="wrapper">
       <span class="icon-close">
         <i class="fa-solid fa-xmark"></i>
@@ -57,24 +64,25 @@
       <!-- LOGIN -->
       <div class="form-box login">
         <h2>Login</h2>
-        <form method="get" action="../Middle End/main.php"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form id="loginForm"> 
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
-            <input type="email" name="email"/>
+            <input type="email" name="email_L"/>
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i class="fa-sharp fa-solid fa-key"></i></span>
-            <input type="password" name="password"/>
+            <input type="password" name="password_L"/>
             <label>Password</label>
           </div>
+          <input type="hidden" name="action" value="loginAction">
           <div class="remember-forgot">
             <label><input type="checkbox" />Remember me</label>
             <a href="#">Forgot Password?</a>
           </div>
-          <button type="submit" class="btn">Login</button>
+          <button type="submit" class="btn" id="loginBtn">Login</button>
           <div class="login-register">
             <p>
               Don't have an Account?
@@ -87,7 +95,7 @@
       <!-- SIGN UP -->
       <div class="form-box register">
         <h2>Sign Up</h2>
-        <form method="post" action="../Middle End/main.php"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form id="signUpForm">
           <div class="input-box">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
             <input type="text" name="username_R"/> <!-- Username Register -->
@@ -105,6 +113,7 @@
             <input type="password" name="password_R"/> <!-- Password Register -->
             <label>Password</label>
           </div>
+          <input type="hidden" name="action" value="signUpAction">
           <div class="remember-forgot">
             <label
               ><input type="checkbox" />I agree to the terms & conditions</label
@@ -121,8 +130,9 @@
       </div>
     </div>
 
-
-    <div class="news_and_albums">
+    <div id="phpResponse" class="form-box register"></div>
+    <!-- HOTTEST EVENTS -->
+    <!-- <div class="news_and_albums">
       <div id="screenshot" class="Lastestnews">
           <div class="container">
               <div class="row">
@@ -140,7 +150,7 @@
                           <figure><img src="images/coldplay.jpeg" alt="img" style="height: 300px;" /></figure>
                           <h3>Coldplay Concert</h3>
                           <span> June 08 2024</span> 
-                          <span>&nbsp;&nbsp;&nbsp;Music</span> <!-- This is the type of the event -->  
+                          <span>&nbsp;&nbsp;&nbsp;Music</span> <!-- This is the type of the event 
                           <p> Get ready for an unforgettable summer experience as Coldplay takes the stage in Athens! 
                               Prepare to be swept away by their iconic melodies and electrifying performances. 
                               Don't miss your chance to witness music magic live—secure your tickets now and make 
@@ -151,7 +161,7 @@
                       <div class="news-box">
                           <figure><img src="images/aiff.jpeg" alt="img" style="height: 300px;" /></figure>
                           <h3>Athens International Film Festival - AIFF</h3>
-                          <span> Autumn, September </span> <!-- This is the type of the event -->
+                          <span> Autumn, September </span> <!-- This is the type of the event
                           <span>&nbsp;&nbsp;&nbsp; Cinema</span>
                           <p> Experience the thrill of indie cinema from across the globe before it hits the mainstream, 
                               alongside the season's most talked-about productions, at this renowned two-week film festival. 
@@ -175,9 +185,9 @@
               </div>
           </div>
       </div>
-      <!-- end Download -->
+      <!-- end Download 
 
-      <!-- Albums -->
+      <!-- Albums 
       <div id="screenshot" class="Albums">
           <div class="container">
               <div class="row">
@@ -221,8 +231,8 @@
               </div>
           </div>
       </div>
-      <!-- end Albums -->
-  </div>
+      <!-- end Albums 
+    </div> -->
 
     <!-- FOOTER -->
     <div class="FOOTER">
@@ -271,6 +281,6 @@
          is sent. In that case, the pop up window will just include a message saying "invalid email and 
          password" for example -->
     <script src="home.js"></script>
-    <!-- <script src="json_handler.js"></script> -->
+    <script src="json_handler.js"></script>
   </body>
 </html>
