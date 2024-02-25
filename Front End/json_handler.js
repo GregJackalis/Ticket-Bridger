@@ -1,34 +1,75 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Wait for the DOM content to be fully loaded before attaching the event listener
-    var submitBtn = document.getElementById('submitBtn');
+var phpElement = document.getElementById('phpResponse');
+var newEl = document.createElement('div');
 
-    submitBtn.addEventListener('click', function (event) {
+// FOR SIGN UP
+$(function() {
+    $("#submitBtn").click(function(event) {
+        console.log("register button pressed!!")
+
+        phpElement.innerHTML = ""; // Clear previous content
+        newEl.innerHTML = ""; // Clear previous content
         event.preventDefault();
-        
-        // Code to handle the click event
-        // Make the AJAX request and handle the JSON response here
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', "../Middle End/main.php", true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
 
-        console.log(xhr.responseText)
+        // Serialize form data
+        var formData = $("#signUpForm").serialize();
+        console.log(formData);
 
-        var errorMessagesElement = document.getElementById('errorMessages');
-        xhr.onreadystatechange = function() {
-            if (xhr.status === 200) {
-                var response = xhr.responseText;
+        // Send data to server using AJAX
+        $.post('../Middle End/main.php', formData, function(response) {
+            console.log(response); // Log response for debugging
 
-                for (error of response.errors) {
-                    var headerElement = document.createElement('h2');
-                    headerElement.textContent = response.errors[error];
-                    errorMessagesElement.appendChild(headerElement);
-                }
-                console.log(response);
+            if (response.status == 'success') {
+                newEl.innerHTML = response.message;
             } else {
-                console.error('Request failed with status:', xhr.status);
+                var header = document.createElement('h2');
+                header.innerHTML = "Errors while Signing up:<br>";
+                phpElement.appendChild(header);
+                newEl.innerHTML = "<p>" + response.message + "</p><br>";
+                for (var key in response.errors) {
+                    if (response.errors.hasOwnProperty(key) && response.errors[key] !== null) {
+                        newEl.innerHTML += "<p>" + response.errors[key] + "</p><br>";
+                    }
+                }
             }
-        };
-        xhr.send();
-    });
 
+            phpElement.appendChild(newEl);
+        });
+    });
+});
+
+// ----------------------------------------------------------------------------------------------------------------------------
+
+// FOR LOGIN
+$(function() {
+    $("#loginBtn").click(function(event) {
+        console.log("login button pressed!!")
+        phpElement.innerHTML = ""; // Clear previous content
+        newEl.innerHTML = ""; // Clear previous content
+        event.preventDefault();
+
+        // Serialize form data
+        var formData = $("#loginForm").serialize();
+        console.log(formData)
+
+        // Send data to server using AJAX
+        $.post('../Middle End/main.php', formData, function(response) {
+            console.log(response); // Log response for debugging
+
+            if (response.status == 'success') {
+                newEl.innerHTML = response.message;
+            } else {
+                var header = document.createElement('h2');
+                header.innerHTML = "Errors while Logging in:<br>"; // Changed header text
+                phpElement.appendChild(header);
+                newEl.innerHTML = "<p>" + response.message + "</p><br>";
+                for (var key in response.errors) {
+                    if (response.errors.hasOwnProperty(key) && response.errors[key] !== null) {
+                        newEl.innerHTML += "<p>" + response.errors[key] + "</p><br>";
+                    }
+                }
+            }
+
+            phpElement.appendChild(newEl);
+        });
+    });
 });
