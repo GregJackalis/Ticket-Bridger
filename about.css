@@ -1,0 +1,85 @@
+body.AboutPage{
+  background-color:#fff;
+}
+
+.about {
+  width: 100%;
+  height: 75vh;
+  padding: 150px 0px;
+  background-color: #202040;
+  border-bottom-left-radius: 4%;
+  border-bottom-right-radius: 4%;
+  box-shadow: 0 0 10px #B030B0;
+  border-bottom: 3px solid #B030B0;
+}
+
+.aboutImageContainer{
+  width:421px;
+  height:500px;
+  margin-right: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 30px #B030B0;
+}
+
+.aboutImage{
+  max-width: 100%; /* Ensure the image doesn't overflow its container */
+  height: 500px;
+  width: 420px;
+}
+
+
+.about-text{
+  width: 100%;
+  max-width: 550px;
+}
+
+.about .main{
+  margin-top: 1000px;
+  width: 95%;
+  max-width: 1130px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about-text h1{
+  color: white;
+  font-size: 80px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.about-text h3{
+  color: white;
+  font-size: 30px;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.about-text span{
+  color: #B030B0;
+}
+
+.about-text p{
+  color: white;
+  letter-spacing: 1px;
+  line-height: 28px;
+  font-size: 18px;
+  margin-bottom: 45px;
+}
+
+/* Media query for screens smaller than 768px */
+@media only screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .about{
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+  }
+
+}

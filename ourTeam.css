@@ -1,0 +1,110 @@
+.team-section{
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: 20px; 
+  margin-bottom: 40px;
+}
+
+.team-section .team-container{
+  width: 80%;
+  margin: auto;
+}
+
+.team-section .team-container .row{
+  width: 60%;
+  margin: auto;
+}
+
+.team-section .team-container .row .title{
+  text-align: center;
+}
+
+.team-section .team-container .row .title h1{
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #202040;
+}
+
+.team-section .team-container .row .title p{
+  font-size: 18px;
+  margin: 30px 0px;
+  color: #202040;
+}
+
+.team-section .team-container .team-card{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 0.3fr);
+  grid-gap: 40px;
+  margin-top: 50px;
+  
+}
+
+.team-section .team-container .team-card .card{
+  width: 100%;
+  background-color: #202040;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #B030B0;
+  cursor: pointer;
+}
+
+.team-section .team-container .team-card .card:hover{
+  background-color: #2c2c50;
+  transition: 0.3s;
+}
+
+.team-section .team-container .team-card .card img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border:6px solid #fff
+}
+
+.team-section .team-container .team-card .card .content{
+  width: 100%;
+  text-align: center;
+}
+
+.team-section .team-container .team-card .card .content h3{
+  font-size: 27px;
+  margin-top: 10px;
+  letter-spacing: 1.5px;
+  color: #FFF;
+}
+
+.team-section .team-container .team-card .card .content h4{
+  font-size: 17px;
+  margin-top: 10px;
+  letter-spacing: 1.5px;
+  color: #FFF;
+}
+
+.team-section .team-container .team-card .card .content p{
+  font-size: 15px;
+  margin: 16px 0px;
+  line-height: 1.5;
+  color: #FFF;
+}
+
+
+@media screen and (max-width: 900px){
+  .team-section .team-container .team-card{
+    
+    grid-template-columns: repeat(2, 0.5fr);
+    
+  }
+}
+
+@media screen and (max-width: 768px){
+  .team-section .team-container .team-card{
+    
+    grid-template-columns: 1fr;
+
+  }
+}

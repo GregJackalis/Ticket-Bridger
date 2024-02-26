@@ -5,7 +5,7 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-body {
+body.HomePage {
   height: 100vh;
   background-image: linear-gradient(to left,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
   background-position: center;
@@ -105,6 +105,7 @@ body {
 
 /* ticket services*/
 .services {
+  background-image: linear-gradient(to left,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
   text-align: center;
 }
 .services > h2 {
@@ -123,6 +124,8 @@ body {
   padding-top: 20px;
   padding-bottom: 0px;
   width: 100%;
+  max-width: 1170px;
+  margin:auto;
   height: 300px;
 }
 .sports, .cinema, .theater, .music {
@@ -145,6 +148,8 @@ body {
 /*search bar*/
 .search>.container {
   display: flex;
+  max-width: 1170px;
+  margin:auto;
   justify-content: center;
   height: 5vh;
 }
@@ -181,13 +186,15 @@ body {
 /*reselling box*/
 .reselling{
   width: 100%;
-  height: 100vh;
+  height: 60vh;
   background-image: linear-gradient(to right,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
   position: relative;
-  top: 155px;
+  margin-top: 100px;
   border-top: solid #602080;
 }
 .reselling > .container {
+  max-width: 1170px;
+  margin:auto;
   padding-top: 20px;
 }
 .reselling > .container > .samuel {

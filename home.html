@@ -12,24 +12,31 @@
       referrerpolicy="no-referrer"
     />
     <!-- Icons fontawesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" type="text/css" href="footer.css" />
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="home.css" />
-    
+
     <title>Ticket Bridger</title>
   </head>
   <!--body section-->
-  <body>
+  <body class="HomePage">
     <!--navigation bar-->
     <header>
       <div class="navBar">
@@ -48,7 +55,7 @@
         </div>
       </div>
 
-    <!--dropdown menu-->
+      <!--dropdown menu-->
       <div class="dropDownMenu">
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -65,7 +72,8 @@
       <!--Login-->
       <div class="form-box login">
         <h2>Login</h2>
-        <form method="get" action="#"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form method="get" action="#">
+          <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
@@ -94,7 +102,8 @@
       <!--Register-->
       <div class="form-box register">
         <h2>Sign Up</h2>
-        <form method="post" action="#"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form method="post" action="#">
+          <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
           <div class="input-box">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
             <input type="text" required />
@@ -130,26 +139,26 @@
     <!--Carousel-->
     <div class="slider">
       <div class="slides">
-        <input type="radio" name="radio-btn" id="radio1">
-        <input type="radio" name="radio-btn" id="radio2">
-        <input type="radio" name="radio-btn" id="radio3">
-        <input type="radio" name="radio-btn" id="radio4">
-        <input type="radio" name="radio-btn" id="radio5">
+        <input type="radio" name="radio-btn" id="radio1" />
+        <input type="radio" name="radio-btn" id="radio2" />
+        <input type="radio" name="radio-btn" id="radio3" />
+        <input type="radio" name="radio-btn" id="radio4" />
+        <input type="radio" name="radio-btn" id="radio5" />
 
         <div class="slide first">
-          <img src="./Images/people-2608316.jpg" alt="">
+          <img src="./Images/people-2608316.jpg" alt="" />
         </div>
         <div class="slide">
-          <img src="./Images/concert-2527495_1920.jpg" alt="">
+          <img src="./Images/concert-2527495_1920.jpg" alt="" />
         </div>
         <div class="slide">
-          <img src="./Images/rudy-dong-fYjyDGtD-0c-unsplash.jpg" alt="">
+          <img src="./Images/rudy-dong-fYjyDGtD-0c-unsplash.jpg" alt="" />
         </div>
         <div class="slide">
-          <img src="./Images/arlinda-1CfBmk3VD2o-unsplash.jpg" alt="">
+          <img src="./Images/arlinda-1CfBmk3VD2o-unsplash.jpg" alt="" />
         </div>
         <div class="slide">
-          <img src="./Images/joe-yates-8LJViXSE_V8-unsplash.jpg" alt="">
+          <img src="./Images/joe-yates-8LJViXSE_V8-unsplash.jpg" alt="" />
         </div>
 
         <div class="navigation-auto">
@@ -159,7 +168,6 @@
           <div class="auto-btn4"></div>
           <div class="auto-btn5"></div>
         </div>
-
       </div>
 
       <div class="navigation-manual">
@@ -172,35 +180,48 @@
     </div>
 
     <script type="text/javascript">
-    var counter = 1;
-    setInterval(function(){
-      document.getElementById('radio' + counter).checked = true;
-      counter++;
-      if(counter > 5){
-       counter = 1;
-      }
-    },5000);
+      var counter = 1;
+      setInterval(function () {
+        document.getElementById("radio" + counter).checked = true;
+        counter++;
+        if (counter > 5) {
+          counter = 1;
+        }
+      }, 5000);
     </script>
-    
+
     <!--Services-->
     <div class="services">
       <h2>Ticket Bridger's Services</h2>
       <div class="container">
         <div class="sports ticketservices">
-          <i class="fa-solid fa-basketball" style="color: rgb(244, 79, 8);"></i>
-          <p>Experience the thrill as a <br> spectator or sell your <br>sports event tickets to <br>passionate fans.</p>
+          <i class="fa-solid fa-basketball" style="color: rgb(244, 79, 8)"></i>
+          <p>
+            Experience the thrill as a <br />
+            spectator or sell your <br />sports event tickets to
+            <br />passionate fans.
+          </p>
         </div>
         <div class="cinema ticketservices">
-          <i class="fa-solid fa-film" style="color: rgb(244, 193, 8);"></i>
-          <p>Whether you're a movie <br>buff or a seller, discover <br> the magic of cinema on <br>our platform.</p>
+          <i class="fa-solid fa-film" style="color: rgb(244, 193, 8)"></i>
+          <p>
+            Whether you're a movie <br />buff or a seller, discover <br />
+            the magic of cinema on <br />our platform.
+          </p>
         </div>
         <div class="theater ticketservices">
-          <i class="fa-solid fa-masks-theater" style="color: rgb(157, 32, 210);"></i>
-          <p>Dive into the world <br>of theater!</p>
+          <i
+            class="fa-solid fa-masks-theater"
+            style="color: rgb(157, 32, 210)"
+          ></i>
+          <p>Dive into the world <br />of theater!</p>
         </div>
         <div class="music ticketservices">
-          <i class="fa-solid fa-music" style="color: rgb(201, 69, 111);"></i>
-          <p>Immerse yourself in the <br> world of music as a buyer <br>or seller.</p>
+          <i class="fa-solid fa-music" style="color: rgb(201, 69, 111)"></i>
+          <p>
+            Immerse yourself in the <br />
+            world of music as a buyer <br />or seller.
+          </p>
         </div>
       </div>
     </div>
@@ -208,38 +229,60 @@
     <div class="search">
       <div class="container">
         <form action="" class="search-bar">
-          <input type="text" placeholder="Search for events" name="q">
-          <button type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
+          <input type="text" placeholder="Search for events" name="q" />
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
-
       </div>
     </div>
-    
+
     <div class="reselling">
       <div class="container">
-        <img src="./Images/samuel-regan-asante-JjlkGAc4OUM-unsplash.jpg" class="samuel" alt="">
-        <img src="./Images/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg" class="dylan" alt="">
+        <img
+          src="./Images/samuel-regan-asante-JjlkGAc4OUM-unsplash.jpg"
+          class="samuel"
+          alt=""
+        />
+        <img
+          src="./Images/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg"
+          class="dylan"
+          alt=""
+        />
         <p>
-          Reselling tickets for <span style="font-weight: bold; color: rgb(230, 232, 111);">cinema</span>, <span style="font-weight: bold; color: rgb(244, 79, 8);">sports</span>,
-          <span style="font-weight: bold; color: rgb(227, 162, 255);">theatre</span>, and <span style="font-weight: bold; color:rgb(201, 69, 111);">music events</span> opens a gateway 
-          for enthusiasts to share their passion and for sellers to facilitate unforgettable
-          experiences. <br> <br> Whether connecting movie buffs with cinematic wonders, uniting sports 
-          fans for live action, immersing individuals in the world of theatre, or enabling 
-          music lovers to partake in unforgettable performances, Ticket Bridger creates a 
-          dynamic marketplace where the excitement of diverse events can be shared, enjoyed,
-          and cherished by a broader audience. <br> <br> Through Ticket Bridger, the process of reselling tickets is streamlined,
-          ensuring a seamless exchange that benefits both sellers and buyers. This innovative platform not only fosters a 
-          sense of community among event enthusiasts but also amplifies the accessibility of captivating cultural and 
-          entertainment experiences. </p>
-
+          Reselling tickets for
+          <span style="font-weight: bold; color: rgb(230, 232, 111)"
+            >cinema</span
+          >,
+          <span style="font-weight: bold; color: rgb(244, 79, 8)">sports</span>,
+          <span style="font-weight: bold; color: rgb(227, 162, 255)"
+            >theatre</span
+          >, and
+          <span style="font-weight: bold; color: rgb(201, 69, 111)"
+            >music events</span
+          >
+          opens a gateway for enthusiasts to share their passion and for sellers
+          to facilitate unforgettable experiences. <br />
+          <br />
+          Whether connecting movie buffs with cinematic wonders, uniting sports
+          fans for live action, immersing individuals in the world of theatre,
+          or enabling music lovers to partake in unforgettable performances,
+          Ticket Bridger creates a dynamic marketplace where the excitement of
+          diverse events can be shared, enjoyed, and cherished by a broader
+          audience. <br />
+          <br />
+          Through Ticket Bridger, the process of reselling tickets is
+          streamlined, ensuring a seamless exchange that benefits both sellers
+          and buyers. This innovative platform not only fosters a sense of
+          community among event enthusiasts but also amplifies the accessibility
+          of captivating cultural and entertainment experiences.
+        </p>
       </div>
-
     </div>
-
 
     <!-- FOOTER -->
     <div class="FOOTER">
-      <div class="container">
+      <div class="footercontainer">
         <div class="row">
           <div class="footer-col">
             <h4>Company</h4>
