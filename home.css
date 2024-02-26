@@ -251,6 +251,18 @@ margin: 10px 10px 10px 0px;
   height: 520px;
 }
 
+@media only screen and (max-width: 768px) {
+   .wrapper{
+    left: 20%;
+   }
+}
+
+@media only screen and (max-width: 568px) {
+  .wrapper{
+   left: 10%;
+  }
+}
+
 li {
   list-style: none;
 }
