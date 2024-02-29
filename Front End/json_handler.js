@@ -18,7 +18,7 @@ $(function() {
         console.log(formData);
 
         // Send data to server using AJAX
-        $.post('../Middle End/main.php', formData, function(response) {
+        $.post('../Back End/main.php', formData, function(response) {
             console.log(response); // Log response for debugging
 
             if (response.status == 'success') {
@@ -60,7 +60,7 @@ $(function() {
         console.log(formData)
 
         // Send data to server using AJAX
-        $.post('../Middle End/main.php', formData, function(response) {
+        $.post('../Back End/main.php', formData, function(response) {
             console.log(response); // Log response for debugging
 
             if (response.status == 'success') {
