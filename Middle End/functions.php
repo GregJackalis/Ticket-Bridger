@@ -43,4 +43,32 @@
             return true;
         }
     }
+
+    function connect_to_database($server, $user, $pass, $db_name) {
+        $conn = new mysqli($server, $user, $pass, $db_name);
+            // Check connection
+            if ($conn->connect_error) {
+                return false;
+            } else {
+                return $conn;
+            }
+    }
+
+    function insert_into_table($username_R, $email_R, $password_R, $table_name, $db_conn) {
+        $stmt = $db_conn->prepare("INSERT INTO $table_name (username, email, password) VALUES (?, ?, ?)"); 
+    
+        $stmt->bind_param("sss", $user, $email, $pass);
+    
+        $user = $username_R;
+        $email = $email_R;
+        $pass = $password_R;
+        $stmt->execute();
+        //     return true; // Return true if insertion is successful
+        // } catch (\PDOException $e) {
+        //     // Log the error or handle it appropriately
+        //     error_log("Error inserting data: " . $e->getMessage());
+        //     return false; // Return false on failure
+        // }
+    }
+    
 ?>
