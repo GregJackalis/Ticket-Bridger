@@ -3,7 +3,6 @@
     ini_set('display_errors', 1);
 
     include 'functions.php';
-    include 'users.php';
     include 'get_env.php';
 
     $response = array(
