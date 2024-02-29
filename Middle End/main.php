@@ -4,9 +4,7 @@
 
     include 'functions.php';
     include 'users.php';
-
-    $username = $email = $password = $action = "";
-    $usernameCheck = $emailCheck = $passwordCheck = false;
+    include 'get_env.php';
 
     $response = array(
         "status" => "error",
@@ -18,7 +16,33 @@
         )
     );
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //  Access environment variables
+    $db_Data = get_env_data('db'); // sending the type of data that i want the function to return
+
+    try {
+        $dbServername = $db_Data[0];
+        $dbUsername = $db_Data[1];
+        $dbPassword = $db_Data[2];
+        $dbName = $db_Data[3];
+        // $response["message"] = $dbServername . $dbUsername . $dbPassword . $dbName;
+    } catch (Error) {
+        $response["message"] = "Failed to get env data";
+    };
+
+    $username = $email = $password = $action = "";
+    $usernameCheck = $emailCheck = $passwordCheck = false;
+
+    $db_connection = connect_to_database($dbServername, $dbUsername, $dbPassword, $dbName);
+    // $response["message"] = connect_to_database($dbServername, $dbUsername, $dbPassword, $dbName);
+
+    if ($db_connection == false) {
+        $response["message"] = "Failed to connect to database!";
+    } else {
+        $response["message"] = "Connected to database!";
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection == true) {
+        
         $action = $_POST["action"];
         
         if ($action == "signUpAction") {
@@ -37,19 +61,24 @@
                 //  1st) encrypt the password with one or more different encryption algorithms (with the usage of secret keys 
                 //       stored in a .env file), and then put it in the variable that the username and password are already in.
 
-                //  2nd) insert email, username, and password to a variable that will be 
-                //  inserted to the database (if all the checks for each field are true)
-                //  need to use the "INSERT..." query to insert all email, username, and password
-                $users[] = array(
-                    'email' => $email,
-                    'username' => $username,
-                    'password' => $password
-                );
-                
+                $insertion_response = insert_into_table($username, $email, $password, "users", $db_connection);
+
                 $response = array(
                     "status" => "success",
-                    "message" => "Credentials have been Validated",
+                    "message" => "Credentials have been Validated"
                 );
+
+                // if ($insertion_response == true) {
+                //     $response = array(
+                //         "status" => "success",
+                //         "message" => "Credentials have been Validated and Added to the Database"
+                //     );
+                // } else {
+                //     $response = array(
+                //         "status" => "success",
+                //         "message" => "Credentials have been Validated but couldn't be inserted to Database"
+                //     );
+                // }
 
             } else {
                 $response["message"] = "Validation failed";
@@ -87,9 +116,8 @@
             }
             // $response["message"] = $users;
         }
-        
-        header('Content-Type: application/json');
-        echo json_encode($response);
-
     }
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 ?>
