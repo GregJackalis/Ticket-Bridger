@@ -252,6 +252,24 @@ margin: 10px 10px 10px 0px;
   height: 520px;
 }
 
+.wrapper.error-message {
+  padding: 2%;
+  background-image: linear-gradient(to right, rgba(96, 32, 128, 0.8), rgba(32, 32, 64, 0.8));
+  color: white;
+  text-align: center;
+  height: 175px;
+  font-size: large;
+  font-style: italic;
+}
+
+.wrapper.message {
+  color: white;
+  background-image: linear-gradient(to right, rgba(96, 32, 128, 0.8), rgba(32, 32, 64, 0.8));
+  height: 100px;
+  font-size: large;
+  font-style: italic;
+}
+
 @media only screen and (max-width: 768px) {
    .wrapper{
     left: 20%;
