@@ -12,7 +12,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" type="text/css" href="footer.css" />
-    
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -28,6 +28,9 @@
   </head>
   <body>
     <!-- NAVIGATION BAR -->
+
+  </head>
+  <body>
     <header>
       <div class="navBar">
         <div class="logo">
@@ -64,11 +67,15 @@
       <div class="form-box login">
         <h2>Login</h2>
         <form id="loginForm"> 
+      <div class="form-box login">
+        <h2>Login</h2>
+        <form method="get" action="#"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
             <input type="email" name="email_L"/>
+            <input type="email" required />
             <label>Email</label>
           </div>
           <div class="input-box">
@@ -77,11 +84,15 @@
             <label>Password</label>
           </div>
           <input type="hidden" name="action" value="loginAction">
+            <input type="password" required />
+            <label>Password</label>
+          </div>
           <div class="remember-forgot">
             <label><input type="checkbox" />Remember me</label>
             <a href="#">Forgot Password?</a>
           </div>
           <button type="submit" class="btn" id="loginBtn">Login</button>
+          <button type="submit" class="btn">Login</button>
           <div class="login-register">
             <p>
               Don't have an Account?
@@ -98,6 +109,12 @@
           <div class="input-box">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
             <input type="text" name="username_R"/> <!-- Username Register -->
+      <div class="form-box register">
+        <h2>Sign Up</h2>
+        <form method="post" action="#"> <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+          <div class="input-box">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            <input type="text" required />
             <label>Username</label>
           </div>
           <div class="input-box">
@@ -105,6 +122,7 @@
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
             <input type="email" name="email_R"/> <!-- Email Register -->
+            <input type="email" required />
             <label>Email</label>
           </div>
           <div class="input-box">
@@ -113,12 +131,16 @@
             <label>Password</label>
           </div>
           <input type="hidden" name="action" value="signUpAction">
+            <input type="password" required />
+            <label>Password</label>
+          </div>
           <div class="remember-forgot">
             <label
               ><input type="checkbox" />I agree to the terms & conditions</label
             >
           </div>
           <button type="submit" class="btn" id="submitBtn">Register</button>
+          <button type="submit" class="btn">Register</button>
           <div class="login-register">
             <p>
               Already have an account?
@@ -135,7 +157,6 @@
         <i class="fa-solid fa-xmark"></i>
       </span>
     </div>
-
     <!-- FOOTER -->
     <div class="FOOTER">
       <div class="container">
@@ -184,5 +205,6 @@
          password" for example -->
     <script src="home.js"></script>
     <script src="json_handler.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>
