@@ -210,14 +210,15 @@ margin: 10px 10px 10px 0px;
   border-radius: 30%;
   float: right;
   margin: 20px 0px 10px 10px;
-  }
-  .reselling > .container > p {
-    color: rgb(191, 195, 197);
-    font-size: x-large;
-    font-family: "Oxygen", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
+}
+
+.reselling > .container > p {
+  color: rgb(191, 195, 197);
+  font-size: x-large;
+  font-family: "Oxygen", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 
 
 
