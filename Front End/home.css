@@ -1,0 +1,636 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body.HomePage {
+  height: 100vh;
+  background-image: linear-gradient(to left,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
+  background-position: center;
+}
+
+.slider {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+}
+.slides{
+  width: 550%;
+  height: 500px;
+  display: flex;
+}
+.slides input{
+  display: none;
+}
+.slide{
+  width: 20%;
+  transition: 2s;
+}
+.slide img{
+  width: 100%;
+  height:100%;
+}
+
+/*css for manual navigation*/
+.navigation-manual {
+  position:relative;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+.manual-btn{
+  border: 2px solid aliceblue;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+.manual-btn:not(:last-child){
+  margin-right: 40px;
+}
+.manual-btn:hover{
+  background: #ef17ef;
+}
+#radio1:checked ~ .first{
+  margin-left: 0;
+}
+#radio2:checked ~ .first{
+  margin-left: -20%;
+}
+#radio3:checked ~ .first{
+  margin-left: -40%;
+}
+#radio4:checked ~ .first{
+  margin-left: -60%;
+}
+#radio5:checked ~ .first{
+  margin-left: -80%;
+}
+
+/*css for automatic navigation*/
+.navigation-auto{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 460px;
+}
+.navigation-auto div{
+  border: 2px solid aliceblue;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+}
+.navigation-auto div:not(:last-child){
+  margin-right: 40px;
+}
+#radio1:checked ~ .navigation-auto .auto-btn1{
+  background: #ef17ef;
+}
+#radio2:checked ~ .navigation-auto .auto-btn2{
+  background: #ef17ef;
+}
+#radio3:checked ~ .navigation-auto .auto-btn3{
+  background: #ef17ef;
+}
+#radio4:checked ~ .navigation-auto .auto-btn4{
+  background: #ef17ef;
+}
+#radio5:checked ~ .navigation-auto .auto-btn5{
+  background: #ef17ef;
+}
+
+/* ticket services*/
+.services {
+  background-image: linear-gradient(to left,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
+  text-align: center;
+}
+.services > h2 {
+  text-align: center;
+  font-size: 3rem;
+  font-family: "Oxygen", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: aliceblue;
+  padding: 10px;
+}
+.services > .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  width: 100%;
+  max-width: 1170px;
+  margin:auto;
+  height: 300px;
+}
+.sports, .cinema, .theater, .music {
+  justify-content: center;
+  font-size: x-large;
+  color: aliceblue;
+}
+.ticketservices > p{
+  color: rgb(191, 195, 197);
+}
+
+.ticketservices > i{
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+.ticketservices > i:hover{
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+/*search bar*/
+.search>.container {
+  display: flex;
+  max-width: 1170px;
+  margin:auto;
+  justify-content: center;
+  height: 5vh;
+}
+.search-bar{
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 253, 252, 0.372);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 0px 20px;
+  backdrop-filter: blur(4px) saturate(180%);
+}
+.search-bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 20px;
+  color: rgba(249, 238, 235, 0.976);
+}
+::placeholder {
+  color: #dddcf1;
+}
+.search-bar button{
+  width: 25px;
+  height: 25px;
+  border: 0;
+  border-radius: 100%;
+  background: #dddcf1;
+  cursor: pointer;
+}
+/*reselling box*/
+.reselling{
+  width: 100%;
+  padding: 20px 0px 50px 0px;
+  background-image: linear-gradient(to right,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
+  position: relative;
+  margin-top: 100px;
+  border-top: solid #602080;
+}
+.reselling > .container {
+  max-width: 1170px;
+  margin:auto;
+  padding-top: 20px;
+}
+.reselling > .container > .samuel {
+width: 330px;
+height: 220px;
+border-radius: 30%;
+float: left;
+margin: 10px 10px 10px 0px;
+}
+.reselling > .container > .dylan {
+  width: 400px;
+  height: 260px;
+  border-radius: 30%;
+  float: right;
+  margin: 20px 0px 10px 10px;
+}
+
+.reselling > .container > p {
+  color: rgb(191, 195, 197);
+  font-size: x-large;
+  font-family: "Oxygen", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+
+
+.wrapper{
+  z-index: 999;
+  top: 25%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  width: 380px;
+  height: 440px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 5px rgb(209, 205, 205);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: scale(0);
+  transition: transform .5s ease, height .2s ease;
+}
+
+.wrapper.active-popup {
+  transform: scale(1);
+}
+
+.wrapper.active {
+  height: 520px;
+}
+
+@media only screen and (max-width: 768px) {
+   .wrapper{
+    left: 20%;
+   }
+}
+
+@media only screen and (max-width: 568px) {
+  .wrapper{
+   left: 10%;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+
+
+@keyframes underlineAnimationIn {
+  from {
+    width: 0;
+    left: 0; /* Starting from the left side */
+  }
+  to {
+    width: 100%;
+    left: 0; /* Staying at the left side */
+  }
+}
+
+@keyframes underlineAnimationOut {
+  from {
+    width: 100%;
+    left: 0; /* Starting from the left side */
+  }
+  to {
+    width: 0;
+    left: 100%; /* Disappearing to the right side */
+  }
+}
+
+/* Style for underlining on hover with animation */
+.navBar a,
+.dropDownMenu a {
+  position: relative; /* Ensure relative positioning for pseudo-elements */
+  text-decoration: none; /* Remove default underline */
+  color: #ffffff; /* Set default link color */
+}
+
+.navBar a:hover,
+.dropDownMenu a:hover {
+  color: #B030B0; /* Adjust link color on hover */
+}
+
+.navBar a:hover::after,
+.dropDownMenu a:hover::after {
+  width: 100%;
+  animation: underlineAnimationIn 0.3s forwards; /* Apply the underline animation */
+}
+
+.navBar a::after,
+.dropDownMenu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff; /* Adjust color as needed */
+  border-radius: 5px;
+  transition: width 0.3s ease; /* Smooth transition for underline animation */
+}
+
+.navBar a:not(:hover)::after,
+.dropDownMenu a:not(:hover)::after {
+  animation: underlineAnimationOut 0.3s forwards; /* Apply the underline animation */
+}
+
+/* Resetting default list styles */
+.navBar ul,
+.dropDownMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* HEADER */
+header{
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 0;
+}
+
+.navBar {
+  width: 100%;
+  height: 95px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #202040;
+  border-top: 5px solid #602080;
+  border-bottom: 5px solid #602080;
+  backdrop-filter: blur(13px);
+}
+
+.navBar .logo {
+  margin-left: 10px;
+}
+
+.navBar .links {
+  display: flex;
+  gap: 5rem;
+  margin-left: -190px;
+}
+
+.navBar .toggleButton {
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: none;
+  margin-right: 15px;
+}
+
+.getStarted {
+  background-color: #602080;
+  box-shadow: 0 0 5px rgb(209, 205, 205);
+  color:#fff;
+  margin-right: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+}
+
+.getStarted:hover {
+  scale: 1.07;
+  color: #fff;
+}
+
+.getStarted:active {
+  scale: 0.95;
+}
+
+/* DROPSOWN MENU */
+.dropDownMenu {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 60px;
+  height: 0;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropDownMenu.open {
+  height: 240px;
+}
+
+.dropDownMenu li{
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+
+.dropDownMenu .getStarted {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-left: 22px;
+}
+
+
+/* RESPONSIVE DESIGN */
+@media(max-width: 1213px){
+  .navBar .links,
+  .navBar .getStarted{
+    display: none;
+  }
+
+  .navBar{
+    backdrop-filter: blur(0);
+  }
+
+  .navBar .toggleButton{
+    display: block;
+  }
+
+  .dropDownMenu {
+    display: block;
+  }
+}
+
+@media(max-width: 576px){
+  .dropDownMenu {
+    left: 2rem;
+    width: unset;
+  } 
+}
+@media(max-width: 576px){
+  .services>.container{
+    display: none; 
+  }
+  .search>.container {
+     display: none;
+  }
+}
+@media(max-width: 1117px){
+  .search>.container {
+    align-items: center;
+    height: 55vh;
+    width: 50%;
+  }
+  .search-bar {
+    padding: 0px 10px;
+  }
+}
+
+
+  
+.wrapper .form-box.login {
+  transition: transform .18s ease;
+  transform: translateX(0);
+}
+
+.wrapper.active .form-box.login{
+  transition: none;
+  transform: translateX(-400px);
+}
+
+
+.wrapper .form-box.register{
+  position: absolute;
+  transition: none;
+  transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register {
+  transition: transform .18s ease;
+  transform: translateX(0);
+}
+
+.wrapper .icon-close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 0 10px rgb(209, 205, 205);
+  background: #ffffff;
+  font-size: 2em;
+  color:#292727;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.form-box h2{
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+}
+
+.input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border-bottom: 2px solid #fff;
+  margin: 30px 0;
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color:#fff;
+  font-weight: 500;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+  top: -5px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  color: #fff;
+  font-weight: 600;
+  padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 8px;
+  font-size: 1.2em;
+  color: #fff;
+  line-height: 57px;
+}
+
+.remember-forgot {
+  font-size: 0.9em;
+  color:#fff;
+  font-weight: 500;
+  margin: -15px 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remember-forgot label input {
+  accent-color: #fff;
+  margin-right: 3px;
+}
+
+.remember-forgot a{
+  color:#fff;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover{
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  background-color: rgb(54, 53, 52);
+  box-shadow: 0 0 5px rgb(209, 205, 205);
+  color:#fff;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.login-register {
+  font-size: .9em;
+  color:#fff;
+  text-align: center;
+  font-weight: 500;
+  margin: 25px 0 10px
+}
+
+.login-register p a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 550;
+}
+
+.login-register p a:hover{
+  text-decoration: underline;
+}
