@@ -70,5 +70,34 @@
         //     return false; // Return false on failure
         // }
     }
+
+    function get_from_table($email_L, $password_L, $table_name, $db_conn) {
+        if (empty($email_L) || empty($password_L)) {
+            return 'cred';
+            
+        } else {
+            // Use prepared statement to prevent SQL injection
+            $sql = "SELECT username, password FROM $table_name WHERE email = ?";
+            $stmt = $db_conn->prepare($sql);
+            $stmt->bind_param("s", $email_L);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            $number_of_rows = $result->num_rows;
+
+            if ($number_of_rows == 0) {
+                return "rec";
+            } else {
+                $row = $result->fetch_assoc();
+                if ($row["password"] == $password_L) {
+                    return $row["username"];
+                } else {
+                    return "inv";
+                    
+                }
+            }
+        }
+    }
+    
     
 ?>

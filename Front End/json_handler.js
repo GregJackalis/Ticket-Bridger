@@ -21,7 +21,7 @@ $(function() {
         $.post('../Middle End/main.php', formData, function(response) {
             console.log(response); // Log response for debugging
 
-            if (response.status == 'success') {
+            if (response.status == 'register success') {
                 newEl.innerHTML = '<p class="popup-font">Registered Successfully!</p>';
                 phpElement.classList.add('message');
             } else {
@@ -52,6 +52,8 @@ $(function() {
 // FOR LOGIN
 $(function() {
     $("#loginBtn").click(function(event) {
+        console.log("login button pressed!!")
+
         newEl.innerHTML = ""; // Clear previous content
         event.preventDefault();
 
@@ -62,24 +64,26 @@ $(function() {
         // Send data to server using AJAX
         $.post('../Middle End/main.php', formData, function(response) {
             console.log(response); // Log response for debugging
-
-            if (response.status == 'success') {
-                newEl.innerHTML = '<p class="popup-font">Logged In Successfully!</p>';
+            
+            if (response.status == 'missing cred error') {
+                newEl.innerHTML = '<p class="popup-font">Missing Credentials!</p>';
                 phpElement.classList.add('message');
-            } else {
-                // var header = document.createElement('h2');
-                // header.innerHTML = "Errors while Logging in:<br>"; // Changed header text
-                // phpElement.appendChild(header);
-                // newEl.innerHTML = "<p>" + response.message + "</p><br>";
-                // for (var key in response.errors) {
-                //     if (response.errors.hasOwnProperty(key) && response.errors[key] !== null) {
-                //         newEl.innerHTML += "<p>" + response.errors[key] + "</p><br>";
-                //     }
-                // }
 
-                newEl.innerHTML = '<p class="popup-font">Incorrect Credentials!</p>';
+            } else if (response.status == 'no records') {
+                    newEl.innerHTML = '<p class="popup-font">No records with that email found!</p>';
+                    phpElement.classList.add('message');
+
+            } else if (response.status == "login error") {
+                newEl.innerHTML = '<p class="popup-font">Invalid Credentials!</p>';
                 phpElement.classList.add('message');
-            }
+                errMessage = true;
+
+                // FOR SUCCESS CASE IN LOGIN PHASE
+            } else if (response.status == 'login success') {
+                newEl.innerHTML = `<p class="popup-font">Welcome back, ${response.message}!</p>`;
+                phpElement.classList.add('message');
+
+            } 
 
             phpElement.appendChild(newEl);
         });
