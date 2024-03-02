@@ -6,7 +6,7 @@
     include 'get_env.php';
 
     $response = array(
-        "status" => "error",
+        "status" => null,
         "message" => null,
         "errors" => array(
             "email" => null,
@@ -25,6 +25,7 @@
         $dbName = $db_Data[3];
         // $response["message"] = $dbServername . $dbUsername . $dbPassword . $dbName;
     } catch (Error) {
+        $response["status"] = "error";
         $response["message"] = "Failed to get env data";
     };
 
@@ -35,12 +36,14 @@
     // $response["message"] = connect_to_database($dbServername, $dbUsername, $dbPassword, $dbName);
 
     if ($db_connection == false) {
+        $response["status"] = "error";
         $response["message"] = "Failed to connect to database!";
     } else {
+        $response["status"] = "db success";
         $response["message"] = "Connected to database!";
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection == true) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection != false) {
         
         $action = $_POST["action"];
         
@@ -63,23 +66,12 @@
                 $insertion_response = insert_into_table($username, $email, $password, "users", $db_connection);
 
                 $response = array(
-                    "status" => "success",
+                    "status" => "register success",
                     "message" => "Credentials have been Validated"
                 );
 
-                // if ($insertion_response == true) {
-                //     $response = array(
-                //         "status" => "success",
-                //         "message" => "Credentials have been Validated and Added to the Database"
-                //     );
-                // } else {
-                //     $response = array(
-                //         "status" => "success",
-                //         "message" => "Credentials have been Validated but couldn't be inserted to Database"
-                //     );
-                // }
-
             } else {
+                $response["status"] = "register error";
                 $response["message"] = "Validation failed";
                 if (!$emailCheck) {
                     $response["errors"]["email"] = "Invalid Email Given";
@@ -97,23 +89,45 @@
         } elseif ($action == "loginAction") {
             $email = setup_data($_POST["email_L"]);
             $password = setup_data($_POST["password_L"]);
-            if (empty($users)) {
-                $response["message"] = "There are no users registered yet!";
-            } else {
-                foreach ($users as $user) {
-                    if ($user['email'] == $email && $user['password'] == $password) {
-                        $response["status"] = "success";
-                        $response["message"] = "User has Successfully Logged In!";
-                        break;
-                    }
-                }
-                
-                // if status in the json response array/object has remained "error", then the credentials given are not correct
-                if ($response["status"] == "error") {
-                    $response["message"] = "User has given wrong credentials!";
-                }
+
+            $sqlResponse = get_from_table($email, $password, "users", $db_connection);
+
+            if ($sqlResponse == "cred") {
+                $response["status"] = "missing cred error";
+                $response["message"] = "Missing Credentials!";
+            } else if($sqlResponse == "rec") {
+                $response["status"] = "no records";
+                $response["message"] = "No records found!";
+            } else if($sqlResponse == "inv") {
+                $response["status"] = "login error";
+                $response["message"] = "Invalid Credentials!";
+            } else { // THIS IS THE SUCCESS CASE IN THE LOGIN PHASE
+                $response["status"] = "login success";
+                $response["message"] = $sqlResponse;
             }
-            // $response["message"] = $users;
+
+            
+
+            // if ($result->num_rows > 0) {
+            //     // if the above == true, then the info given was found on the DB
+            //     while ($row = $result->fetch_assoc()) {
+            //         $db_password = $row['password'];
+            //         if ($db_password == $password && $row['email'] == $email) {
+            //             $response["status"] = "login success";
+            //             $response["message"] = "User has Successfully Logged In!";
+            //             $found = true;
+            //             break;
+            //         }
+            //     }
+
+            //     if ($found == false) {
+            //         $response["status"] = "login error";
+            //         $response["message"] = "Invalid Credentials (credentials do NOT match)";
+            //     }
+            // } else {
+            //     $response["status"] = "login error";
+            //     $response["message"] = "No record with that email was found on the database";
+            // }
         }
     }
 
