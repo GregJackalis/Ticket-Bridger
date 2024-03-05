@@ -20,7 +20,7 @@
     function checkingUsername($username_value) {
         if (empty($username_value)) {
             return false;
-        } elseif (!preg_match("/^[a-zA-Z-' ]*$/",$username_value)) {
+        } elseif (!preg_match("/^[a-zA-Z_' -]*$/", $username_value)) {
             return false;
         } else {
             return true;
