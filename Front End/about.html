@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- LINK FOR AJAX SUPPORT (AKA json_handler.js SCRIPT FOR HANDLING COMMUNICATION) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <!-- ---------------------------------------------------------------------- -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -26,7 +31,7 @@
     <header>
       <div class="navBar">
         <div class="logo">
-          <img src="Images/LogoImage.png" alt="logoImage" />
+          <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.html';"/>
         </div>
         <ul class="links">
           <li><a href="home.html">Home</a></li>
@@ -49,32 +54,34 @@
       </div>
     </header>
 
+    <!-- LOGIN & SIGN UP POP-UP WINDOWS -->
     <div class="wrapper">
       <span class="icon-close">
         <i class="fa-solid fa-xmark"></i>
       </span>
 
+      <!-- LOGIN -->
       <div class="form-box login">
         <h2>Login</h2>
-        <form method="get" action="#">
-          <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form id="loginForm"> 
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
-            <input type="email" required />
+            <input type="email" name="email_L"/>
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i class="fa-sharp fa-solid fa-key"></i></span>
-            <input type="password" required />
+            <input type="password" name="password_L"/>
             <label>Password</label>
           </div>
+          <input type="hidden" name="action" value="loginAction">
           <div class="remember-forgot">
             <label><input type="checkbox" />Remember me</label>
             <a href="#">Forgot Password?</a>
           </div>
-          <button type="submit" class="btn">Login</button>
+          <button type="submit" class="btn" id="loginBtn">Login</button>
           <div class="login-register">
             <p>
               Don't have an Account?
@@ -84,33 +91,34 @@
         </form>
       </div>
 
+      <!-- SIGN UP -->
       <div class="form-box register">
         <h2>Sign Up</h2>
-        <form method="post" action="#">
-          <!-- On the action attribute the .php file that will handle HTTP requests will be placed-->
+        <form id="signUpForm">
           <div class="input-box">
             <span class="icon"><i class="fa-solid fa-user"></i></span>
-            <input type="text" required />
+            <input type="text" name="username_R"/> <!-- Username Register -->
             <label>Username</label>
           </div>
           <div class="input-box">
             <span class="icon"
               ><i class="fa-sharp fa-solid fa-envelope"></i
             ></span>
-            <input type="email" required />
+            <input type="email" name="email_R"/> <!-- Email Register -->
             <label>Email</label>
           </div>
           <div class="input-box">
             <span class="icon"><i class="fa-sharp fa-solid fa-key"></i></span>
-            <input type="password" required />
+            <input type="password" name="password_R"/> <!-- Password Register -->
             <label>Password</label>
           </div>
+          <input type="hidden" name="action" value="signUpAction">
           <div class="remember-forgot">
             <label
               ><input type="checkbox" />I agree to the terms & conditions</label
             >
           </div>
-          <button type="submit" class="btn">Register</button>
+          <button type="submit" class="btn" id="submitBtn">Register</button>
           <div class="login-register">
             <p>
               Already have an account?
@@ -119,6 +127,13 @@
           </div>
         </form>
       </div>
+    </div>
+
+    
+    <div id="phpResponse" style="margin-top: 175px;">
+      <span class="icon-close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
     </div>
 
     <section class="about">
@@ -253,7 +268,7 @@
           </div>
 
           <div class="footer-col">
-            <h4>Copyright© Ticket Bridge</h4>
+            <h4>Copyright© Ticket Bridger</h4>
           </div>
         </div>
       </div>
@@ -261,5 +276,6 @@
 
     <script src="home.js"></script>
     <script src="aboutImages.js"></script>
+    <script src="json_handler.js"></script>
   </body>
 </html>
