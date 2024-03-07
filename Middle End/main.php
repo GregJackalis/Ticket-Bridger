@@ -105,29 +105,6 @@
                 $response["status"] = "login success";
                 $response["message"] = $sqlResponse;
             }
-
-            
-
-            // if ($result->num_rows > 0) {
-            //     // if the above == true, then the info given was found on the DB
-            //     while ($row = $result->fetch_assoc()) {
-            //         $db_password = $row['password'];
-            //         if ($db_password == $password && $row['email'] == $email) {
-            //             $response["status"] = "login success";
-            //             $response["message"] = "User has Successfully Logged In!";
-            //             $found = true;
-            //             break;
-            //         }
-            //     }
-
-            //     if ($found == false) {
-            //         $response["status"] = "login error";
-            //         $response["message"] = "Invalid Credentials (credentials do NOT match)";
-            //     }
-            // } else {
-            //     $response["status"] = "login error";
-            //     $response["message"] = "No record with that email was found on the database";
-            // }
         }
     }
 
