@@ -1,7 +1,9 @@
 var phpElement = document.getElementById('phpResponse');
 phpElement.classList.add('wrapper');
 var newEl = document.createElement('div');
-
+const closeGetStarted = document.querySelectorAll('.getStarted');
+const carticon = document.querySelector('.carticon');
+const usericon = document.querySelector('.usericon');
 var errMessage = false; // this is used in order to check whether the message is for an error, 
 // so that the appropriate class will be used
 
@@ -24,6 +26,7 @@ $(function() {
             if (response.status == 'register success') {
                 newEl.innerHTML = '<p class="popup-font">Registered Successfully!</p>';
                 phpElement.classList.add('message');
+                phpElement.classList.remove('active');
             } else {
                 // var header = document.createElement('h2');
                 // header.innerHTML = "Errors while Signing up:<br>";
@@ -82,7 +85,16 @@ $(function() {
             } else if (response.status == 'login success') {
                 newEl.innerHTML = `<p class="popup-font">Welcome back, ${response.message}!</p>`;
                 phpElement.classList.add('message');
+                carticon.classList.add('active');
+                usericon.classList.add('active');
 
+                closeGetStarted.forEach(function(el){
+
+                    el.classList.add('close');
+
+                });
+                removeActive();
+               
             } 
 
             phpElement.appendChild(newEl);

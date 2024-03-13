@@ -372,6 +372,7 @@ header{
   padding: 0;
 }
 
+
 .navBar {
   width: 100%;
   height: 95px;
@@ -424,6 +425,41 @@ header{
 .getStarted:active {
   scale: 0.95;
 }
+
+.getStarted.close{
+  display:none;
+}
+
+.carticon{
+  scale: 0;
+}
+
+.carticon.active{
+  color:#fff;
+  scale:1;
+}
+
+.usericon{
+  scale:0;
+}
+
+.usericon.active{
+  color: #fff;
+  scale:1;
+  margin-left: 20px;
+  margin-right: 50px;
+}
+
+.usericon.active:hover{
+  cursor: pointer;
+  scale:1.02;
+}
+
+.carticon.active:hover{
+  cursor: pointer;
+  scale:1.02;
+}
+
 
 /* DROPSOWN MENU */
 .dropDownMenu {

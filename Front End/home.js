@@ -37,8 +37,14 @@ popUpButtons.forEach(function(button){
 });
 
 iconClose.addEventListener('click', ()=> {
-  wrapper.classList.remove('active-popup');
+   wrapper.classList.remove('active-popup');
 });
+
+
+const removeActive = function(){
+  wrapper.classList.remove('active-popup');
+
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,4 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, 100);
 });
+
+
     
