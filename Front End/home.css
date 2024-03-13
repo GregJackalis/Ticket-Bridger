@@ -231,7 +231,7 @@ margin: 10px 10px 10px 0px;
   position: fixed;
   width: 380px;
   height: 440px;
-  background: transparent;
+  background: #602080;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(30px);
