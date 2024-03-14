@@ -231,7 +231,7 @@ margin: 10px 10px 10px 0px;
   position: fixed;
   width: 380px;
   height: 440px;
-  background: #602080;
+  background: linear-gradient(to left, rgba(96, 32, 128, 0.8), rgba(32, 32, 64, 0.8));
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   backdrop-filter: blur(30px);
@@ -461,6 +461,8 @@ header{
 }
 
 
+
+
 /* DROPSOWN MENU */
 .dropDownMenu {
   display: none;
@@ -495,6 +497,10 @@ header{
   margin-left: 22px;
 }
 
+.dropDownMenu .getStarted.close{
+  display: none;
+}
+
 
 /* RESPONSIVE DESIGN */
 @media(max-width: 1213px){
@@ -503,9 +509,15 @@ header{
     display: none;
   }
 
-  .navBar{
-    backdrop-filter: blur(0);
+  .usericon.active{
+    margin-right: 20px;
   }
+
+  .actionButtons{
+    display: flex;
+    align-items: center;
+  }
+
 
   .navBar .toggleButton{
     display: block;

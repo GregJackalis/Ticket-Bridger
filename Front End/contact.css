@@ -1,5 +1,6 @@
+
 body.ContactPage{
-    background-color:#fff;
+    background: linear-gradient(to bottom, #f2f2f2, #f0f0f0);
 }
 
 .contact {
@@ -15,15 +16,18 @@ body.ContactPage{
 .contact .content{
     max-width: 800px;
     text-align: center;
-    
 }
 
-.contact .content h2{
-    font-size: 40px;
-    font-weight: 500;
-    color: #202040;
+.contact .content h1{
+    font-size: 60px;
+    background: linear-gradient(to right, #202040, #202060, #602080, #B030B0);
+    /* Very Light Purple: #f2e3ff, Light Purple: #dbc6ff, Light Blue: #aad7ff */
+    /* You can adjust the colors as needed */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     text-transform: capitalize;
-
+    margin-bottom: 10px;
 }
 
 .contact .content p{
