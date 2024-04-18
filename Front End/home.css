@@ -9,17 +9,21 @@ body.HomePage {
   height: 100vh;
   background-image: linear-gradient(to left,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
   background-position: center;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 .slider {
   width: 100%;
+  max-width: 100vw;
   height: 500px;
   border-radius: 10px;
   overflow: hidden;
   margin: 10px;
+  box-sizing: border-box;
 }
 .slides{
-  width: 550%;
+  width: 500%;
   height: 500px;
   display: flex;
 }
@@ -28,11 +32,18 @@ body.HomePage {
 }
 .slide{
   width: 20%;
-  transition: 2s;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  
 }
+
 .slide img{
   width: 100%;
   height:100%;
+  
+}
+.slide {
+  transition: none; /* Remove transition effect */
 }
 
 /*css for manual navigation*/
@@ -56,7 +67,7 @@ body.HomePage {
   background: #ef17ef;
 }
 #radio1:checked ~ .first{
-  margin-left: 0;
+  margin-left: 0%;
 }
 #radio2:checked ~ .first{
   margin-left: -20%;
@@ -214,10 +225,10 @@ margin: 10px 10px 10px 0px;
 
 .reselling > .container > p {
   color: rgb(191, 195, 197);
-  font-size: x-large;
-  font-family: "Oxygen", sans-serif;
-  font-weight: 300;
-  font-style: normal;
+  /* font-size: x-large; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* font-weight: 300;
+  font-style: normal; */
 }
 
 
