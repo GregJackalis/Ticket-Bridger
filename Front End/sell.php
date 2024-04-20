@@ -39,7 +39,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
       </div>
       <ul class="links">
         <li><a href="home.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
+        <li><a href="about.php">About Us</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
@@ -56,7 +56,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
     <!--dropdown menu-->
     <div class="dropDownMenu">
       <li><a href="home.php">Home</a></li>
-      <li><a href="about.php">About</a></li>
+      <li><a href="about.php">About Us</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>
