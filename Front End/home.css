@@ -460,6 +460,28 @@ header{
   scale:1.02;
 }
 
+.sellButton {
+  background-color: #602080;
+  box-shadow: 0 0 5px rgb(209, 205, 205);
+  color:#fff;
+  margin-right: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+  display: none;
+}
+
+.sellButton.active{
+  display: inline-block;
+}
+
+.sellButton.active:hover{
+  scale: 1.02;
+}
+
 
 
 

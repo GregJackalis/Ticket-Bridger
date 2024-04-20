@@ -56,5 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100);
 });
 
+const sellonClick = document.getElementById('sellclick');
 
+sellonClick.addEventListener('click', function() {
+  // Redirect to another page (file) when the button is clicked
+  window.location.href = 'sell.php'; // Change to the file you want to navigate to
+});
     
