@@ -5,6 +5,7 @@
         echo "    const closeGetStarted = document.querySelectorAll('.getStarted');";
         echo "    const carticon = document.querySelector('.carticon');";
         echo "    const usericon = document.querySelector('.usericon');";
+        // document.querySelector() for NEW ICONS/BUTTONS and then underneath make them active
         echo "    carticon.classList.add('active');";
         echo "    usericon.classList.add('active');";
         echo "    closeGetStarted.forEach(function(el){";
