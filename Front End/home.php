@@ -62,6 +62,11 @@ if ($_SESSION['loggedIn'] == 'ye') {
       </div>
     </div>
 
+    <div class="userDropMenu">
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Logout</a></li>
+    </div>
+
     <!--dropdown menu-->
     <div class="dropDownMenu">
       <li><a href="home.php">Home</a></li>

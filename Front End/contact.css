@@ -107,7 +107,8 @@ body.ContactPage{
     position: relative;
     width: 100%;
     margin-top: 10px;
-   border-radius: 5px;
+    border-radius: 5px;
+    
 }
 
 .ContactForm .inputBox input,
@@ -138,6 +139,7 @@ body.ContactPage{
 
 .ContactForm input{
     border-radius: 5px;
+    
 }
 
 .ContactForm textarea{
