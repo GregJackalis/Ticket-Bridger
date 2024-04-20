@@ -4,7 +4,7 @@ var newEl = document.createElement('div');
 const closeGetStarted = document.querySelectorAll('.getStarted');
 const carticon = document.querySelector('.carticon');
 const usericon = document.querySelector('.usericon');
-const sellButton = document.querySelector('.sellButton');
+const sellButton = document.querySelector('.sellButton'); 
 var errMessage = false; // this is used in order to check whether the message is for an error, 
 // so that the appropriate class will be used
 
@@ -89,7 +89,7 @@ $(function() {
                 carticon.classList.add('active');
                 usericon.classList.add('active');
                 sellButton.classList.add('active');
-
+            
                 closeGetStarted.forEach(function(el){
 
                     el.classList.add('close');

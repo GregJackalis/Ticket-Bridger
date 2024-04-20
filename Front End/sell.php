@@ -53,13 +53,17 @@ if ($_SESSION['loggedIn'] == 'ye') {
       </div>
     </div>
 
+    <div class="userDropMenu" style="right: 3rem;">
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">Logout</a></li>
+    </div>
+
     <!--dropdown menu-->
     <div class="dropDownMenu">
       <li><a href="home.php">Home</a></li>
       <li><a href="about.php">About Us</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="contact.php">Contact Us</a></li>
-      <button class="getStarted">Get Started</button>
     </div>
   </header>
 
@@ -137,6 +141,8 @@ if ($_SESSION['loggedIn'] == 'ye') {
       </div>
     </form>
   </div>
+
+  <script src="home.js"></script>
 
 </body>
 

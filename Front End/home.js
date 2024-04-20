@@ -1,17 +1,26 @@
 const toggleBtn = document.querySelector(".toggleButton");
-      const toggleBtnIcon = document.querySelector(".toggleButton i");
-      const dropDownMn = document.querySelector(".dropDownMenu");
+const toggleBtnIcon = document.querySelector(".toggleButton i");
+const dropDownMn = document.querySelector(".dropDownMenu");
+const toggleUserIcon= document.querySelector(".usericon");
+const userDropDown = document.querySelector(".userDropMenu");
 
-      toggleBtn.onclick = function () {
-        dropDownMn.classList.toggle("open");
-        const isOpen = dropDownMn.classList.contains("open");
+toggleBtn.onclick = function () {
+  dropDownMn.classList.toggle("open");
+  const isOpen = dropDownMn.classList.contains("open");
+  userDropDown.classList.remove("open");
 
-        toggleBtnIcon.classList = isOpen
-          ? "fa-solid fa-xmark"
-          : "fa-solid fa-bars";
-      };
+  toggleBtnIcon.classList = isOpen
+    ? "fa-solid fa-xmark"
+    : "fa-solid fa-bars";
+};
 
+toggleUserIcon.onclick = function () {
+  userDropDown.classList.toggle("open");
+  dropDownMn.classList.remove("open");
+  toggleBtnIcon.classList = "fa-solid fa-Bars";
+}
 
+     
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
@@ -57,9 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const sellonClick = document.getElementById('sellclick');
-
+ 
 sellonClick.addEventListener('click', function() {
   // Redirect to another page (file) when the button is clicked
   window.location.href = 'sell.php'; // Change to the file you want to navigate to
 });
+
+
+
     
