@@ -1,186 +1,192 @@
 .SellingPage{
-    background-color: #202040;
+  background-color: #202040;
 }
 h1 {
-    text-align: center;
-    font-size: 50px;
-    color: #ebe3e3;
-    margin-top: 100px;
+  text-align: center;
+  font-size: 50px;
+  color: #ebe3e3;
+  margin-top: 100px;
 }
 .line {
-    width: 50%; 
-    height: 1px; 
-    background-color: #df5252; 
-    margin: 10px auto; 
-  }
+  width: 50%; 
+  height: 1px; 
+  background-color: #df5252; 
+  margin: 10px auto; 
+}
 
 .description > p {
-    color: #ebe3e3;
-    font-size: 25px;
-    text-align: center;
-    margin-top: 20px;
+  color: #ebe3e3;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 20px;
 }
 .flip-card {
-    background-color: transparent;
-    width: 200px;
-    height: 200px;
-    perspective: 1000px;
-    position: relative;
-    left: 975px;
-    top: 25px;
-    border-radius: 25%;
-    opacity: 0.7;
-  }
-  
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 1s;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    
-  }
-  
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 25%;
-  }
-  
-  .flip-card-front {
-    background-color: #bbb;
-    color: black;
-  }
-  
-  .flip-card-back {
-    background-color: #2980b9;
-    color: white;
-    transform: rotateY(180deg);
-  }
-
-  .upload > img {
-    position: relative;
-    width: 200px;
-    height: 250px;
-    left: 975px;
-    top: 50px;
-    border-radius: 25%;
-    opacity: 0.7;
-    display: flex;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  .form-column > img {
-    width: 120px;
-    height: 120px;
-    border-radius: 25%;
-    float: right;
-    
-  }
-  
-  .UploadForm {
-    position: absolute;
-    top: 200px;
-    left: 215px;
-    font-size: 20px;
-    width: 650px;
-    height: 470px;
-    color: #E0D4E8;
-    padding: 30px 20px 50px 60px;
-    margin: 50px;
-    border-radius: 10%;
-    border: solid #602080;
-    box-shadow: 0 0 10px #B030B0;
-    background-image: linear-gradient(to right,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
-    background-size: 400% 100%;
-    animation: gradientAnimation 20s ease infinite;
-  }
-  @keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+  position: relative;
+  left: 975px;
+  top: 25px;
+  border-radius: 25%;
+  opacity: 0.7;
 }
 
-  .form-column {
-    float: left;
-    width: 45%;
-    margin-right: 5%;
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 25%;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.upload > img {
+  position: relative;
+  width: 200px;
+  height: 250px;
+  left: 975px;
+  top: 50px;
+  border-radius: 25%;
+  opacity: 0.7;
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.form-column > img {
+  width: 120px;
+  height: 120px;
+  border-radius: 25%;
+  float: right;
+  
+}
+
+.UploadForm {
+  position: absolute;
+  top: 200px;
+  left: 215px;
+  font-size: 20px;
+  width: 650px;
+  height: 470px;
+  color: #E0D4E8;
+  padding: 30px 20px 50px 60px;
+  margin: 50px;
+  border-radius: 10%;
+  border: solid #602080;
+  box-shadow: 0 0 10px #B030B0;
+  background-image: linear-gradient(to right,rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
+  background-size: 400% 100%;
+  animation: gradientAnimation 20s ease infinite;
+}
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
   }
-  .UploadForm input[name="title"] {
-  width:100%;
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+.form-column {
+  float: left;
+  width: 45%;
+  margin-right: 5%;
+}
+.UploadForm input[name="title"] {
+width:100%;
 }
 .UploadForm input[name="title"]::placeholder {
-  color: #B030B0;
-  font-size: larger;
+color: #000000;
+font-size: larger;
 }
-  .UploadForm input[type="text"],
-  .UploadForm input[type="date"],
-  .UploadForm input[type="number"],
-  .UploadForm input[type="radio"],
-  .UploadForm input[type="file"]{
-    border: solid #602080;
-    background-color: #f8f8f8;
-    padding: 5px;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-  .UploadForm input[type="text"]{
-    width: 200px;
-  }
-  .UploadForm input[type="number"]{
-    width: 100px;
-  }
-  .UploadForm input[type="file"]{
-    width: 230px;
-    color: #999;
-  }
-  input[type="file"]::file-selector-button {
-    background-color: #b9b3b3;
-    border-radius: 5px;
-  }
-  input[type="file"]::file-selector-button:hover {
-    width: 100px;
-    background-color: #928c8c;
-  }
-  .kinds {
-    font-size: 15px;
-  }
-  .UploadForm input[type="submit"]{
-    background-color: rgb(10, 122, 241);
-    border-radius: 25%;
-    width: 100px;
-    height: 30px;
-    font-size: 20px;
-    color: aliceblue;
-    margin-left: 130px;
-  }
+.UploadForm input[type="text"],
+.UploadForm input[type="date"],
+.UploadForm input[type="number"],
+.UploadForm input[type="radio"],
+.UploadForm input[type="file"]{
+  border: solid #602080;
+  background-color: #f8f8f8;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.UploadForm input[type="text"]{
+  width: 200px;
+}
+.UploadForm input[type="number"]{
+  width: 100px;
+}
+.UploadForm input[type="file"]{
+  width: 230px;
+  color: #999;
+}
+input[type="file"]::file-selector-button {
+  background-color: #b9b3b3;
+  border-radius: 5px;
+}
+input[type="file"]::file-selector-button:hover {
+  width: 100px;
+  background-color: #928c8c;
+}
+.kinds {
+  font-size: 15px;
+}
+.UploadForm input[type="submit"]{
+  background-color: rgb(10, 122, 241);
+  border-radius: 25%;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  color: aliceblue;
+  margin-left: 130px;
+}
 
-  .coin {
-    color: #E0D4E8;
-  }
+.coin {
+  color: #E0D4E8;
+}
 
-  @media(max-width: 676px){
-    .description{
-      display: none; 
-    }
-    .form-column {
-      float: none;
-      width: 100%;
-      margin-right: 0;
-    }
+.error {
+  color: red;
+  font-size: 15px;
+}
+
+@media(max-width: 676px){
+  .description{
+    display: none; 
   }
+  .form-column {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+

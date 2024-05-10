@@ -157,20 +157,20 @@ if ($_SESSION['loggedIn'] == 'ye') {
       <input type="radio" name="radio-btn" id="radio5" />
 
       <div class="slide first">
-        <img src="./Images/people-2608316.jpg" alt="" />
-      </div>
-      <div class="slide">
-        <img src="./Images/concert-2527495_1920.jpg" alt="" />
-      </div>
-      <div class="slide">
-        <img src="./Images/rudy-dong-fYjyDGtD-0c-unsplash.jpg" alt="" />
-      </div>
-      <div class="slide">
-        <img src="./Images/arlinda-1CfBmk3VD2o-unsplash.jpg" alt="" />
-      </div>
-      <div class="slide">
-        <img src="./Images/joe-yates-8LJViXSE_V8-unsplash.jpg" alt="" />
-      </div>
+          <img src="./Images/people-2608316.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="./Images/concert-2527495_1920.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="./Images/522d43da-6bd5-4bd0-b43f-ee209330316b.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="Images/4ad30422-535f-4363-a436-1767c398cfb7.jpg" alt="" />
+        </div>
+        <div class="slide">
+          <img src="./Images/joe-yates-8LJViXSE_V8-unsplash(1).jpg" alt="" />
+        </div>
 
       <div class="navigation-auto">
         <div class="auto-btn1"></div>
