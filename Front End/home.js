@@ -63,3 +63,16 @@ sellonClick.addEventListener('click', function() {
   window.location.href = 'sell.php'; // Change to the file you want to navigate to
 });
     
+
+//appear table for event results
+document.addEventListener("DOMContentLoaded", function(){
+
+    const table = document.getElementById("table");
+
+    if (result){
+        table.classList.remove("appear");
+      }else{
+      table.classList.add("appear");
+    }
+});
+

@@ -236,12 +236,79 @@ if ($_SESSION['loggedIn'] == 'ye') {
   <!--Search bar-->
   <div class="search">
     <div class="container">
-      <form action="" class="search-bar">
-        <input type="text" placeholder="Search for events" name="q" />
+      <form action="" method="GET" class="search-bar">
+        <input type="text" placeholder="Search for events" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" 
+        autocomplete="off" required/>
         <button type="submit">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </form>
+    </div>
+    <div class="tableResult ">
+      <table class="appear" id="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>City</th>
+            <th>Original Price</th>
+            <th>Selling Price</th>
+            <th>Number of Tickets</th>
+            <th>Kind</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+              define('DB_SERVER', 'localhost');
+              define('DB_USERNAME', 'kostas');
+              define('DB_PASSWORD', '12345');
+              define('DB_NAME', 'ticketbridger');
+              
+              $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+              if(isset($_GET['search']))
+              {
+                $filterValues = $_GET['search'];
+                $query = "SELECT * FROM ticket1 WHERE CONCAT(title,date,city) LIKE '%$filterValues%'";
+                $result = mysqli_query($link, $query);
+
+                if(mysqli_num_rows($result) > 0)
+                {
+                  foreach($result as $items)
+                  {
+                    ?> <script>
+                      const result = true;
+                      console.log(result);
+                    </script>
+                    <tr>
+                      <td><?= $items['title']?></td>
+                      <td><?= $items['date']?></td>
+                      <td><?= $items['city']?></td>
+                      <td><?= $items['original_price']?></td>
+                      <td><?= $items['selling_price']?></td>
+                      <td><?= $items['number_ticket']?></td>
+                      <td><?= $items['kind']?></td>
+                      <td><button class="buy">Buy now</button></td>
+                    </tr>
+                    <?php
+                  }
+
+                } else {
+                  ?>
+                 <p class="msg">No event found</p>
+                  <?php
+                }
+              }
+          ?>
+
+          <tr>
+            <td></td>
+          </tr>
+
+        </tbody>
+      </table>
+
     </div>
   </div>
 
