@@ -183,6 +183,52 @@ body.HomePage {
   background: #dddcf1;
   cursor: pointer;
 }
+.appear{
+  display: none;
+}
+.tableResult{
+   
+}
+table{
+  width: 70%;
+  border-collapse: collapse;
+ border-radius: 8px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+td{
+  background-color: #dddcf1;
+}
+th {
+  background-color: #fcc204;
+  border-bottom: 2px solid #ddd;
+}
+.msg{
+  color: red;
+  text-align: center;
+}
+.buy{
+  background-color: #602080;
+  box-shadow: 0 0 5px rgb(209, 205, 205);
+  color:#fff;
+  margin-right: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+}
+
+.buy:hover{
+  scale: 1.02;
+}
+
 /*reselling box*/
 .reselling{
   width: 100%;
@@ -575,6 +621,15 @@ header{
   }
 }
 
+@media screen and (max-width: 600px) {
+  table {
+      width: 100%;
+  }
+  th, td {
+      padding: 8px;
+      font-size: 14px;
+  }
+}
 
   
 .wrapper .form-box.login {
