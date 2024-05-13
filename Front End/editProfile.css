@@ -1,0 +1,51 @@
+.edit-profile-form {
+  margin-top: 50px; /* Adjust as needed */
+  background-color: #202040;
+  padding: 40px; /* Increase padding for a bigger form */
+  border-radius: 10px;
+  max-width: 400px; /* Increase max-width for a wider form */
+  margin: auto; /* Center the form horizontally */
+  margin-bottom: 15.4vh;
+  margin-top: 20vh;
+  border: #602080 2px solid;
+  box-shadow: 0 0 10px #B030B0;
+
+}
+
+.edit-profile-form h2 {
+  color: #ffffff;
+  text-align: center; /* Center the heading */
+}
+
+.edit-profile-form .form-group label {
+  color: #ffffff;
+  display: block;
+}
+
+.edit-profile-form input[type="text"],
+.edit-profile-form input[type="email"] {
+  background-color: #ffffff;
+  color: #602080;
+  border: 1px solid #602080;
+  border-radius: 5px;
+  padding: 16px; /* Increase padding for taller inputs */
+  width: calc(100% - 32px); /* Adjust width as needed */
+  margin-bottom: 20px; /* Add more space between inputs */
+  font-size: 16px; /* Increase font size */
+}
+
+.edit-profile-form button[type="submit"] {
+  background-color: #602080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 16px 32px; /* Increase padding for a larger button */
+  cursor: pointer;
+  width: 50%; /* Make button full width */
+  border: #ffffff 0.5px solid;
+}
+
+.edit-profile-form button[type="submit"]:hover {
+  background-color: #B030B0;
+}
+

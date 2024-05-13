@@ -2,7 +2,7 @@ var phpElement = document.getElementById('phpResponse');
 phpElement.classList.add('wrapper');
 var newEl = document.createElement('div');
 const closeGetStarted = document.querySelectorAll('.getStarted');
-const carticon = document.querySelector('.carticon');
+
 const usericon = document.querySelector('.usericon');
 const sellButton = document.querySelector('.sellButton');
 var errMessage = false; // this is used in order to check whether the message is for an error, 
@@ -41,6 +41,7 @@ $(function() {
                 newEl.innerHTML = '<p class="popup-font">Email must be of valid type!<br>';
                 newEl.innerHTML += 'Password must contain at least a number, an uppercase character,'
                 newEl.innerHTML += ' a lowercase character, a special character, and its length <br>to be more than 8 characters.</p>';
+                newEl.innerHTML += ' <br> If all the previous is done then email Already used.</p>';
                 phpElement.classList.add('error-message');
                 errMessage = true;
             }
@@ -86,7 +87,7 @@ $(function() {
             } else if (response.status == 'login success') {
                 newEl.innerHTML = `<p class="popup-font">Welcome back, ${response.message}!</p>`;
                 phpElement.classList.add('message');
-                carticon.classList.add('active');
+                
                 usericon.classList.add('active');
                 sellButton.classList.add('active');
 

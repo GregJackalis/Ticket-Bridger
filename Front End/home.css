@@ -539,15 +539,27 @@ header{
   top: 60px;
   height: 0;
   width: 300px;
+  border: #B030B0 1px solid;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-radius: 10px;
   overflow: hidden;
-  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  visibility: hidden;
+  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropDownMenu a{
+  color: #ffffff;
+  font-weight: 400;
+  -webkit-text-stroke-width: 0.4px; /* Width of the stroke */
+  -webkit-text-stroke-color: #B030B0; /* Color of the stroke */
 }
 
 .dropDownMenu.open {
   height: 240px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .dropDownMenu li{
@@ -568,6 +580,65 @@ header{
 .dropDownMenu .getStarted.close{
   display: none;
 }
+
+.userDropMenu {
+  position: absolute;
+  right: 8rem;
+  top: 60px;
+  height: 0;
+  width: 150px;
+  border: #B030B0 1px solid;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.userDropMenu.Logout {
+  position: absolute;
+  right: 8rem;
+  top: 60px;
+  height: 0;
+  width: 150px;
+  border: #B030B0 1px solid;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.userDropMenu.Logout.open {
+  height: 50px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.userDropMenu.open {
+  height: 100px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.userDropMenu li {
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userDropMenu a {
+  color: #ffffff;
+  font-weight: 400;
+  -webkit-text-stroke-width: 0.4px; /* Width of the stroke */
+  -webkit-text-stroke-color: #B030B0; /* Color of the stroke */
+}
+
 
 
 /* RESPONSIVE DESIGN */
