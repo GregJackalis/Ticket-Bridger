@@ -1,6 +1,7 @@
 <?php
 
-function get_env_data($type) {
+function get_env_data($type)
+{
     // Define the path to the .env file
     $env_file_path = __DIR__ . "/../Classified/database.env";
 
@@ -40,7 +41,4 @@ function get_env_data($type) {
 
         return array($server, $user, $password, $name);
     }
-    
-
 }
-?>

@@ -44,7 +44,6 @@ if ($_SESSION['loggedIn'] == 'ye') {
       <ul class="links">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
       <div class="actionButtons">
@@ -58,10 +57,33 @@ if ($_SESSION['loggedIn'] == 'ye') {
       </div>
     </div>
 
+    <div class="userDropMenu">
+      <li><a href="editProfile.php">Profile</a></li>
+      <li><a href="#" id="Logout">Logout</a></li>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#Logout').on('click', function() {
+          $.ajax({
+            url: 'tempLogout.php', // Path to your PHP script to destroy the session
+            method: 'POST',
+            success: function(response) {
+              // Redirect to index.php after session is destroyed
+              window.location.href = 'home.php';
+            },
+            error: function(xhr, status, error) {
+              console.error(xhr.responseText);
+              // Handle error if needed
+            }
+          });
+        });
+      });
+    </script>
+
     <div class="dropDownMenu">
       <li><a href="home.php">Home</a></li>
       <li><a href="about.php">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>
     </div>
@@ -89,8 +111,8 @@ if ($_SESSION['loggedIn'] == 'ye') {
         </div>
         <input type="hidden" name="action" value="loginAction">
         <div class="remember-forgot">
-          <label><input type="checkbox" />Remember me</label>
-          <a href="#">Forgot Password?</a>
+          <!-- <label><input type="checkbox" />Remember me</label> -->
+          <a id="forgotBtn">Forgot Password?</a>
         </div>
         <button type="submit" class="btn" id="loginBtn">Login</button>
         <div class="login-register">
@@ -232,7 +254,6 @@ if ($_SESSION['loggedIn'] == 'ye') {
           <ul>
             <li><a href="about.php">About us</a></li>
             <li><a href="contact.php">Contact us</a></li>
-            <li><a href="services.html">Services</a></li>
           </ul>
         </div>
 

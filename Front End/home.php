@@ -48,12 +48,10 @@ if ($_SESSION['loggedIn'] == 'ye') {
       <ul class="links">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
       <div class="actionButtons">
         <button class="getStarted">Get Started</button>
-        <i class="carticon fa-solid fa-cart-shopping"></i>
         <i class="usericon fa-solid fa-user"></i>
         <button class="sellButton" id="sellclick">Sell</button>
         <div class="toggleButton">
@@ -62,11 +60,34 @@ if ($_SESSION['loggedIn'] == 'ye') {
       </div>
     </div>
 
+    <div class="userDropMenu">
+      <li><a href="editProfile.php">Profile</a></li>
+      <li><a href="#" id="Logout">Logout</a></li>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#Logout').on('click', function() {
+          $.ajax({
+            url: 'tempLogout.php', // Path to your PHP script to destroy the session
+            method: 'POST',
+            success: function(response) {
+              // Redirect to index.php after session is destroyed
+              window.location.href = 'home.php';
+            },
+            error: function(xhr, status, error) {
+              console.error(xhr.responseText);
+              // Handle error if needed
+            }
+          });
+        });
+      });
+    </script>
+
     <!--dropdown menu-->
     <div class="dropDownMenu">
       <li><a href="home.php">Home</a></li>
       <li><a href="about.php">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>
     </div>
@@ -94,8 +115,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
         </div>
         <input type="hidden" name="action" value="loginAction">
         <div class="remember-forgot">
-          <label><input type="checkbox" />Remember me</label>
-          <a href="#">Forgot Password?</a>
+          <a id="forgotBtn">Forgot Password?</a>
         </div>
         <button type="submit" class="btn" id="loginBtn">Login</button>
         <div class="login-register">
@@ -157,20 +177,20 @@ if ($_SESSION['loggedIn'] == 'ye') {
       <input type="radio" name="radio-btn" id="radio5" />
 
       <div class="slide first">
-          <img src="./Images/people-2608316.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="./Images/concert-2527495_1920.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="./Images/522d43da-6bd5-4bd0-b43f-ee209330316b.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="Images/4ad30422-535f-4363-a436-1767c398cfb7.jpg" alt="" />
-        </div>
-        <div class="slide">
-          <img src="./Images/joe-yates-8LJViXSE_V8-unsplash(1).jpg" alt="" />
-        </div>
+        <img src="./Images/people-2608316.jpg" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/concert-2527495_1920.jpg" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/522d43da-6bd5-4bd0-b43f-ee209330316b.jpg" alt="" />
+      </div>
+      <div class="slide">
+        <img src="Images/4ad30422-535f-4363-a436-1767c398cfb7.jpg" alt="" />
+      </div>
+      <div class="slide">
+        <img src="./Images/joe-yates-8LJViXSE_V8-unsplash(1).jpg" alt="" />
+      </div>
 
       <div class="navigation-auto">
         <div class="auto-btn1"></div>
@@ -237,8 +257,9 @@ if ($_SESSION['loggedIn'] == 'ye') {
   <div class="search">
     <div class="container">
       <form action="" method="GET" class="search-bar">
-        <input type="text" placeholder="Search for events" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" 
-        autocomplete="off" required/>
+        <input type="text" placeholder="Search for events" name="search" value="<?php if (isset($_GET['search'])) {
+                                                                                  echo $_GET['search'];
+                                                                                } ?>" autocomplete="off" required />
         <button type="submit">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -291,17 +312,16 @@ if ($_SESSION['loggedIn'] == 'ye') {
                       <td><?= $items['number_ticket']?></td>
                       <td><?= $items['kind']?></td>
                       <td><button class="buy"><a href="./book.php?ticketID=<?php echo $id; ?>">Buy now</a></button>
-                    </td>
+                      </td>
                     </tr>
                     <?php
-                  }
-
-                } else {
-                  ?>
-                 <p class="msg">No event found</p>
-                  <?php
-                }
-              }
+                  } 
+               } else {
+              ?>
+              <p class="msg">No event found</p>
+          <?php
+            }
+          }
           ?>
 
         </tbody>
@@ -348,7 +368,6 @@ if ($_SESSION['loggedIn'] == 'ye') {
           <ul>
             <li><a href="about.php">About us</a></li>
             <li><a href="contact.php">Contact us</a></li>
-            <li><a href="services.html">Services</a></li>
           </ul>
         </div>
 
