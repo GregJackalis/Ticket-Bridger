@@ -7,8 +7,14 @@ if (!isset($_SESSION['loggedIn'])) {
     $_SESSION['loggedIn'] = 'nah';
 }
 
-// error_reporting(0);
+// Enable error reporting and logging
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Log errors to a file
+ini_set('log_errors', 1);
+ini_set('error_log', 'error.log');
 
 include 'functions.php';
 include 'get_env.php';
@@ -116,6 +122,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection != false) {
             $_SESSION['loggedIn'] = 'ye';
             $_SESSION['username'] = $sqlResponse;
         }
+    } else if ($action == "changePass") {
+
+        $infoArr = [ setup_data($_POST["userEmail"]), setup_data($_POST["oldPassword"]), setup_data($_POST["newPassword"]), setup_data($_POST["reEnterPassword"]) ];
+
+        $hasChanged = changePassword($infoArr, $db_connection);
+
+        if ($hasChanged === true) {
+            $response["status"] = "success";
+            $response["message"] = "passChanged";
+        } else {
+            $response["status"] = "failed";
+            $response["message"] = $hasChanged;
+        }
+
+
     }
 }
 
