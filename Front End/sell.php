@@ -15,6 +15,10 @@ if ($_SESSION['loggedIn'] == 'ye') {
 ?>
 
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /* Database credentials. */
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'kostas');
@@ -86,12 +90,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_FILES["file"]["name"])){
       $fileErr = "*";
     } else {
-      // Process file upload
-      $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
-      $tname = $_FILES["file"]["tmp_name"]; // Corrected file input name
-      $uploads_dir = '/uploads';
-      move_uploaded_file($tname, $uploads_dir.'/'.$pname);
-  }
+         // Process file upload
+        $target_dir = 'tickets/';
+        $fileName = basename($_FILES["file"]["name"]);
+        $targetPath = $target_dir . $fileName;
+
+        // Check if the directory exists and is writable
+        if (!is_dir($target_dir)) {
+            $fileErr = "Error: Destination directory does not exist or is not writable.";
+        } else {
+            // Attempt to move the uploaded file
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetPath)) {
+                // File uploaded successfully
+            } else {
+                $fileErr = "Failed to move uploaded file.";
+            }
+        }
+}
 
     // Check for errors before inserting into database
     if(empty($titleErr) && empty($dateErr) && empty($cityErr) && empty($original_priceErr)
@@ -112,7 +127,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_selling_price = $selling_price;
             $param_number_of_ticket = $number_of_ticket;
             $param_kind = $kind;
-            $param_file_path = $uploads_dir.'/'.$pname;
+            // $param_file_path = $uploads_dir.$pname;
+            $param_file_path = $targetPath;
 
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -174,7 +190,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <header>
         <div class="navBar">
         <div class="logo">
-            <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.html';"/>
+            <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.php';"/>
         </div>
         <ul class="links">
             <li><a href="home.php">Home</a></li>

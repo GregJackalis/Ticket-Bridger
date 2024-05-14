@@ -255,7 +255,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
             <th>Selling Price</th>
             <th>Number of Tickets</th>
             <th>Kind</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -282,6 +282,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
                       console.log(result);
                     </script>
                     <tr>
+                      <?php $id = $items['ticketID'] ?>
                       <td><?= $items['title']?></td>
                       <td><?= $items['date']?></td>
                       <td><?= $items['city']?></td>
@@ -289,7 +290,8 @@ if ($_SESSION['loggedIn'] == 'ye') {
                       <td><?= $items['selling_price']?></td>
                       <td><?= $items['number_ticket']?></td>
                       <td><?= $items['kind']?></td>
-                      <td><button class="buy">Buy now</button></td>
+                      <td><button class="buy"><a href="./book.php?ticketID=<?php echo $id; ?>">Buy now</a></button>
+                    </td>
                     </tr>
                     <?php
                   }
@@ -301,10 +303,6 @@ if ($_SESSION['loggedIn'] == 'ye') {
                 }
               }
           ?>
-
-          <tr>
-            <td></td>
-          </tr>
 
         </tbody>
       </table>
