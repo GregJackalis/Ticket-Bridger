@@ -61,7 +61,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
     </div>
 
     <div class="userDropMenu">
-      <li><a href="editProfile.php">Profile</a></li>
+      <li><a href="./editProfile.php">Profile</a></li>
       <li><a href="#" id="Logout">Logout</a></li>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

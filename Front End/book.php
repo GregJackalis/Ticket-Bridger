@@ -108,6 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Send the email
             $mail->send();
             echo '<script>alert("Email sent successfully!");</script>';
+            header("Location: home.php");
             } catch (Exception $e) {
               echo '<script>alert("Email could not be sent. Mailer Error: ' . $mail->ErrorInfo . '");</script>';
         }
@@ -149,12 +150,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <ul class="links">
             <li><a href="home.php">Home</a></li>
             <li><a href="about.php">About</a></li>
-            <li><a href="services.php">Services</a></li>
             <li><a href="contact.php">Contact Us</a></li>
         </ul>
         <div class="actionButtons">
             <button class="getStarted close">Get Started</button>
-            <i class="carticon active fa-solid fa-cart-shopping"></i>
             <i class="usericon active fa-solid fa-user"></i>
             <div class="toggleButton">
                 <i class="fa-solid fa-bars"> </i>
@@ -166,7 +165,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="dropDownMenu">
             <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
             <li><a href="contact.html">Contact Us</a></li>
             <button class="getStarted">Get Started</button>
         </div>

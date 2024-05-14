@@ -13,7 +13,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
 
 // Database connection
 $servername = "localhost";
-$username = "fanis";
+$username = "kostas";
 $password = "12345";
 $dbname = "ticketbridger";
 
@@ -72,7 +72,7 @@ $conn->close();
   <header>
     <div class="navBar">
       <div class="logo">
-        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.html';" />
+        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='./home.php';" />
       </div>
       <ul class="links">
         <li><a href="home.php">Home</a></li>
