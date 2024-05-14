@@ -77,7 +77,6 @@ $conn->close();
       <ul class="links">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About</a></li>
-        <li><a href="services.php">Services</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
       <div class="actionButtons">
@@ -116,7 +115,6 @@ $conn->close();
     <div class="dropDownMenu">
       <li><a href="home.php">Home</a></li>
       <li><a href="about.php">About Us</a></li>
-      <li><a href="services.html">Services</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>
     </div>
@@ -146,7 +144,6 @@ $conn->close();
           <ul>
             <li><a href="about.php">About us</a></li>
             <li><a href="contact.php">Contact us</a></li>
-            <li><a href="services.html">Services</a></li>
           </ul>
         </div>
 

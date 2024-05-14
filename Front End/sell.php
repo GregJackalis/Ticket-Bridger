@@ -17,9 +17,9 @@ if ($_SESSION['loggedIn'] == 'ye') {
 <?php
 /* Database credentials. */
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'fanis');
-define('DB_PASSWORD', '12345');
-define('DB_NAME', 'ticketbridger');
+define('DB_USERNAME', 'php_mysql_testDB');
+define('DB_PASSWORD', '123456789');
+define('DB_NAME', 'test_db');
 
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -174,7 +174,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <ul class="links">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About</a></li>
-        <li><a href="services.php">Services</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
       <div class="actionButtons">
@@ -215,7 +214,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="dropDownMenu">
       <li><a href="home.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact Us</a></li>
       <button class="getStarted">Get Started</button>
     </div>

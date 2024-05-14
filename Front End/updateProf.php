@@ -21,9 +21,9 @@ function checkingEmail($email_value, $currentUsername)
   } else {
     // Database connection
     $servername = "localhost";
-    $username = "fanis";
-    $password = "12345";
-    $dbname = "ticketbridger";
+    $username = "php_mysql_testDB";
+    $password = "123456789";
+    $dbname = "test_db";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {

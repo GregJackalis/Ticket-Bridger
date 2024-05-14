@@ -16,9 +16,9 @@ function checkingEmail($email_value)
     } else {
         // Database connection
         $servername = "localhost";
-        $username = "fanis";
-        $password = "12345";
-        $dbname = "ticketbridger";
+        $username = "php_mysql_testDB";
+        $password = "123456789";
+        $dbname = "test_db";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
         if ($conn->connect_error) {
@@ -127,5 +127,64 @@ function get_from_table($email_L, $password_L, $table_name, $db_conn)
                 return "inv";
             }
         }
+    }
+}
+
+
+function changePassword($userArr, $db_conn) {
+    // in array ==> email, old password, new password, re-entered new password
+
+    // 1st step: check if email exists in db
+    // 2nd step: check if old password is true (after the first step is true)
+    // 3rd step: check if two new passwords much with each other
+    // 4th step: check if new password matches the constraints
+    // 5th step: if all checks are passed, change password on db
+
+    $sql = "SELECT username, email, password FROM users WHERE email = ?";
+    $stmt = $db_conn->prepare($sql);
+    $stmt->bind_param("s", $userArr[0]);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // first step
+    if ($result->num_rows > 0) {
+
+        // assuming that only one record is found since emails are unique
+        $row = $result->fetch_assoc();
+
+        // second step
+        if ($row["password"] === $userArr[1]){
+
+            // third step
+            if ($userArr[2] === $userArr[3]) {
+
+                // fourth step
+                if (checkingPassword($userArr[2])) {
+
+                    // fifth step
+                    $sql = "UPDATE users SET password = ? WHERE email = ? AND password = ?";
+                    $stmt = $db_conn->prepare($sql);
+                    $stmt->bind_param("sss", $userArr[2], $userArr[0], $userArr[1]);
+                    $stmt->execute();
+
+                    if ($stmt->affected_rows > 0) {
+                        return true;
+                    } else {
+                        return "errDb";
+                    }
+
+                } else {
+                    return "invPass";
+                }
+
+            } else {
+                return "noMatch"; // new passwords do not match
+            }
+        } else {
+            return "invOld"; // old password do not match with the one in DB
+        }
+
+    } else {
+        return "noEmail"; // no email was found with the email given
     }
 }
