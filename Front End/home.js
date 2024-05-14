@@ -86,3 +86,25 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 });
 
+// Check the URL
+if (window.location.href.includes("home.php")) {
+  var pageType = "H";
+} else if (window.location.href.includes("about.php")) {
+  var pageType = "A";
+} else if (window.location.href.includes("contact.php")) {
+  var pageType = "C";
+}
+
+// send parameter to change password for accurate re-direction of user
+$(document).ready(function() {
+  $("#forgotBtn").click(function(event) {
+      // Convert the array to JSON string
+      var from = JSON.stringify(pageType);
+                
+      // Construct the URL with the JSON string as a parameter
+      var url = "./changePass.html?from=" + encodeURIComponent(from);
+
+      // Navigate to the constructed URL
+      window.location.href = url;
+  });
+});
