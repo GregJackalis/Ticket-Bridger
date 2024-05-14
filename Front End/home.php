@@ -276,52 +276,53 @@ if ($_SESSION['loggedIn'] == 'ye') {
             <th>Selling Price</th>
             <th>Number of Tickets</th>
             <th>Kind</th>
-            <th></th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <?php
-          define('DB_SERVER', 'localhost');
-          define('DB_USERNAME', 'php_mysql_testDB');
-          define('DB_PASSWORD', '123456789');
-          define('DB_NAME', 'test_db');
+              define('DB_SERVER', 'localhost');
+              define('DB_USERNAME', 'kostas');
+              define('DB_PASSWORD', '12345');
+              define('DB_NAME', 'ticketbridger');
+              
+              $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-          $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+              if(isset($_GET['search']))
+              {
+                $filterValues = $_GET['search'];
+                $query = "SELECT * FROM ticket1 WHERE CONCAT(title,date,city) LIKE '%$filterValues%'";
+                $result = mysqli_query($link, $query);
 
-          if (isset($_GET['search'])) {
-            $filterValues = $_GET['search'];
-            $query = "SELECT * FROM ticket1 WHERE CONCAT(title,date,city) LIKE '%$filterValues%'";
-            $result = mysqli_query($link, $query);
-
-            if (mysqli_num_rows($result) > 0) {
-              foreach ($result as $items) {
-          ?> <script>
-                  const result = true;
-                  console.log(result);
-                </script>
-                <tr>
-                  <td><?= $items['title'] ?></td>
-                  <td><?= $items['date'] ?></td>
-                  <td><?= $items['city'] ?></td>
-                  <td><?= $items['original_price'] ?></td>
-                  <td><?= $items['selling_price'] ?></td>
-                  <td><?= $items['number_ticket'] ?></td>
-                  <td><?= $items['kind'] ?></td>
-                  <td><button class="buy">Buy now</button></td>
-                </tr>
-              <?php
-              }
-            } else {
+                if(mysqli_num_rows($result) > 0)
+                {
+                  foreach($result as $items)
+                  {
+                    ?> <script>
+                      const result = true;
+                      console.log(result);
+                    </script>
+                    <tr>
+                      <?php $id = $items['ticketID'] ?>
+                      <td><?= $items['title']?></td>
+                      <td><?= $items['date']?></td>
+                      <td><?= $items['city']?></td>
+                      <td><?= $items['original_price']?></td>
+                      <td><?= $items['selling_price']?></td>
+                      <td><?= $items['number_ticket']?></td>
+                      <td><?= $items['kind']?></td>
+                      <td><button class="buy"><a href="./book.php?ticketID=<?php echo $id; ?>">Buy now</a></button>
+                      </td>
+                    </tr>
+                    <?php
+                  } 
+               } else {
               ?>
               <p class="msg">No event found</p>
           <?php
             }
           }
           ?>
-
-          <tr>
-            <td></td>
-          </tr>
 
         </tbody>
       </table>

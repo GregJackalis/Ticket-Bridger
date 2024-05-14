@@ -1,0 +1,62 @@
+body {
+    background-color: #601d8d;
+    margin: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 50px;
+    color: #ebe3e3;
+    margin-top: 120px; 
+  }
+  
+  .bookForm {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    width: 650px;
+    height: 400px;
+    color: #883dba;
+    padding: 0px 20px 20px 60px;
+    border-radius: 10%;
+    border: solid #602080;
+    box-shadow: 3px 3px 15px #e633e6;
+    background-image: linear-gradient(to right, rgb(32, 32, 64), rgb(32, 32, 96), rgb(96, 32, 128), rgb(32, 32, 96));
+    background-size: 400% 100%;
+    animation: gradientAnimation 20s ease infinite;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+  }
+   
+  .bookForm input[type="text"] {
+    border: solid #602080;
+    background-color: #af8bb4;
+    color: #1f1b1b;
+    padding: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 300px;
+    height: 30px;
+    margin: 5px 0; 
+  }
+  
+  .bookForm input[type="submit"] {
+    background-color: rgb(10, 122, 241);
+    border-radius: 25%;
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    color: aliceblue;
+    display: block;
+    margin: 20px auto 0; 
+  }
+  
+  .error {
+    color: red;
+    font-size: 15px;
+  }
+  
