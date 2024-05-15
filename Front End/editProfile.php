@@ -13,7 +13,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
 
 // Database connection
 $servername = "localhost";
-$username = "kostas";
+$username = "fanis";
 $password = "12345";
 $dbname = "ticketbridger";
 

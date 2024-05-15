@@ -108,7 +108,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
         </div>
         <input type="hidden" name="action" value="loginAction">
         <div class="remember-forgot">
-        <a id="forgotBtn">Forgot Password?</a>
+          <a id="forgotBtn">Forgot Password?</a>
         </div>
         <button type="submit" class="btn" id="loginBtn">Login</button>
         <div class="login-register">
@@ -170,13 +170,17 @@ if ($_SESSION['loggedIn'] == 'ye') {
         <h1>About us</h1>
         <h3>Ticket<span> Bridger</span></h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-          obcaecati porro fugit cumque libero perferendis quod laudantium nam
-          quibusdam est aspernatur nobis sint laboriosam, aliquid consequuntur
-          iusto sunt ad! Rem molestiae corrupti sunt accusantium reprehenderit
-          optio dolor expedita praesentium laudantium commodi nisi quis
-          tempora possimus fugiat ex at quam repudiandae, quos assumenda odio
-          dicta blanditiis debitis. Impedit porro praesentium mollitia.
+          Welcome to Ticket Bridger – where your ticketing experience reaches new heights!
+
+          At Ticket Bridger, we're passionate about connecting you with the events you love. Whether it's concerts, sports games, or theater shows, we've got you covered. Our user-friendly platform allows you to effortlessly search, view, buy, and sell tickets, all in one place.
+
+          With Ticket Bridger, you're not just purchasing tickets – you're joining a community of fellow fans who share your enthusiasm for live entertainment. Our extensive event listings ensure there's something for everyone, from the hottest concerts to the most anticipated sports matchups.
+
+          And if you ever need assistance, our dedicated support team is here to help. We're committed to providing you with a seamless and enjoyable ticket-buying experience from start to finish.
+
+          Join us at Ticket Bridger and let's make memories together!
+
+
         </p>
         <!--May a button hear that leeds to contact us-->
       </div>
@@ -189,9 +193,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
         <div class="title">
           <h1>our team</h1>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit cupiditate sunt tenetur at mollitia odit saepe
-            adipisci ducimus dignissimos. At?
+            Meet our dedicated team committed to enhancing your ticket-buying experience and ensuring your satisfaction every step of the way.
           </p>
         </div>
       </div>
@@ -204,21 +206,19 @@ if ($_SESSION['loggedIn'] == 'ye') {
             <h3>Kostas</h3>
             <h4>Database Designer</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Nostrum illo explicabo architecto.
+              Passionate problem solver dedicated to optimizing database performance and ensuring data integrity.
             </p>
           </div>
         </div>
         <div class="card">
           <div class="image-section">
-            <img src="Images/Gregory.png" />
+            <img src="Images/GrigorisPicture.jpg" />
           </div>
           <div class="content">
             <h3>Grigoris</h3>
             <h4>Back-end Developer</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Nostrum illo explicabo architecto.
+              Expert engineer focused on building resilient and efficient backend systems to power our platform.
             </p>
           </div>
         </div>
@@ -230,8 +230,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
             <h3>George</h3>
             <h4>Web Developer/Designer</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Nostrum illo explicabo architecto.
+              Innovative designer committed to crafting intuitive user interfaces that elevate the user experience.
             </p>
           </div>
         </div>
@@ -243,8 +242,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
             <h3>Fanis</h3>
             <h4>Web Developer/Designer</h4>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Nostrum illo explicabo architecto.
+              Driven developer consistently striving for excellence and pushing boundaries to deliver top-notch solutions.
             </p>
           </div>
         </div>

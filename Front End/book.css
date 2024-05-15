@@ -1,6 +1,7 @@
 body {
     background-color: #601d8d;
     margin: 0;
+    overflow: hidden;
   }
   
   h1 {
@@ -11,15 +12,13 @@ body {
   }
   
   .bookForm {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative; /* Change from absolute to relative */
+    margin: 50px auto; /* Adjust margin for centering */
     font-size: 20px;
     width: 650px;
-    height: 400px;
+    height: 400px; 
     color: #883dba;
-    padding: 0px 20px 20px 60px;
+    padding: 20px 60px; /* Adjust padding */
     border-radius: 10%;
     border: solid #602080;
     box-shadow: 3px 3px 15px #e633e6;
@@ -30,7 +29,9 @@ body {
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-  }
+    margin-bottom: 8vh;
+}
+
    
   .bookForm input[type="text"] {
     border: solid #602080;
