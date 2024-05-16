@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Send the email
             $mail->send();
             echo '<script>alert("Email sent successfully!");</script>';
-            header("Location: home.php");
+            echo "<script>window.open('home.php','_self')</script>";
         } catch (Exception $e) {
             echo '<script>alert("Email could not be sent. Mailer Error: ' . $mail->ErrorInfo . '");</script>';
         }
