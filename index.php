@@ -1,4 +1,9 @@
 <?php
+
+header("Access-Control-Allow-Origin: http://localhost");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 session_start();
 
 if (!isset($_SESSION['loggedIn'])) {
@@ -283,9 +288,9 @@ if ($_SESSION['loggedIn'] == 'ye') {
           <?php
               // Database connection
               define('DB_SERVER', 'localhost');
-              define('DB_USERNAME', 'kostas');
-              define('DB_PASSWORD', '12345');
-              define('DB_NAME', 'ticketbridger');
+              define('DB_USERNAME', 'smth');
+              define('DB_PASSWORD', 'smth!');
+              define('DB_NAME', 'smth');
               
               $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 

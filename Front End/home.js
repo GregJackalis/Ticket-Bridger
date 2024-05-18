@@ -86,11 +86,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const table = document.getElementById("table");
 
-    if (result){
+    if (result !== undefined) {
+      if (result){
         table.classList.remove("appear");
-      }else{
-      table.classList.add("appear");
+      } else {
+        table.classList.add("appear");
     }
+    }
+    
 });
 
 // Check the URL

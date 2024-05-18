@@ -13,9 +13,9 @@ require '../phpmailer/src/SMTP.php';
 
 // Database connection
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'kostas');
-define('DB_PASSWORD', '12345');
-define('DB_NAME', 'ticketbridger');
+define('DB_USERNAME', 'smth');
+define('DB_PASSWORD', 'smth!');
+define('DB_NAME', 'smth');
 
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 

@@ -16,11 +16,11 @@ function checkingEmail($email_value)
     } else {
         // Database connection
         $servername = "localhost";
-        $username = "php_mysql_testDB";
-        $password = "123456789";
-        $dbname = "test_db";
+        $username = "smth";
+        $password = "smth!";
+        $dbname = "smth";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -76,7 +76,7 @@ function checkingPassword($password_value)
 
 function connect_to_database($server, $user, $pass, $db_name)
 {
-    $conn = new mysqli($server, $user, $pass, $db_name);
+    $conn = mysqli_connect($server, $user, $pass, $db_name);
     // Check connection
     if ($conn->connect_error) {
         return false;

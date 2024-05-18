@@ -23,11 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var jsonString = JSON.stringify(formDataObject);
         console.log(jsonString);
 
-        if (window.location.href.includes("index.php") || window.location.href.includes("")) {
-            var url = "Middle End/main.php";
-        } else {
+        if (window.location.href.includes("Front%20End")) {
             var url = "../Middle End/main.php";
-        }
+        } else if (window.location.href.includes("index.php") || window.location.href.includes("")) {
+            var url = "Middle End/main.php";
+        } 
 
         try {
             // Send data to server using fetch
@@ -143,11 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var jsonString = JSON.stringify(formDataObject);
         console.log(jsonString);
 
-        if (window.location.href.includes("index.php") || window.location.href.includes("")) {
-            var url = "Middle End/main.php";
-        } else {
+        if (window.location.href.includes("Front%20End")) {
             var url = "../Middle End/main.php";
-        }
+        } else if (window.location.href.includes("index.php") || window.location.href.includes("")) {
+            var url = "Middle End/main.php";
+        } 
 
         try {
             // Send data to server using fetch
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             phpElement.appendChild(newEl);
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Error:", JSON.stringify(error));
             // Handle errors here
         }
 

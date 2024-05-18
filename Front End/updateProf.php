@@ -21,9 +21,9 @@ function checkingEmail($email_value, $currentUsername)
   } else {
     // Database connection
     $servername = "localhost";
-    $username = "kostas";
-    $password = "12345";
-    $dbname = "ticketbridger";
+    $username = "smth";
+    $password = "smth!";
+    $dbname = "smth";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -76,9 +76,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       // Database connection
       $servername = "localhost";
-      $db_username = "kostas";
-      $db_password = "12345";
-      $dbname = "ticketbridger";
+      $db_username = "smth";
+      $db_password = "smth!";
+      $dbname = "smth";
 
       $conn = new mysqli($servername, $db_username, $db_password, $dbname);
       if ($conn->connect_error) {

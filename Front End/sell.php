@@ -21,9 +21,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 /* Database credentials. */
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'kostas');
-define('DB_PASSWORD', '12345');
-define('DB_NAME', 'ticketbridger');
+define('DB_USERNAME', 'smth');
+define('DB_PASSWORD', 'smth!');
+define('DB_NAME', 'smth');
  
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);

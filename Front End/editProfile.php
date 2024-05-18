@@ -13,9 +13,9 @@ if ($_SESSION['loggedIn'] == 'ye') {
 
 // Database connection
 $servername = "localhost";
-$username = "kostas";
-$password = "12345";
-$dbname = "ticketbridger";
+$username = "smth";
+$password = "smth!";
+$dbname = "smth";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
