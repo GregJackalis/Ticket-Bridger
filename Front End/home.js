@@ -69,7 +69,14 @@ const sellonClick = document.getElementById('sellclick');
  
 sellonClick.addEventListener('click', function() {
   // Redirect to another page (file) when the button is clicked
-  window.location.href = 'sell.php'; // Change to the file you want to navigate to
+
+  if (window.location.href.includes("Front%20End")) {
+    var url = "./sell.php";
+  } else if (window.location.href.includes("index.php") || window.location.href.includes("")) {
+    var url = "Front End/sell.php";
+  } 
+
+  window.location.href = url; // Change to the file you want to navigate to
 });
 
     
@@ -79,32 +86,54 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const table = document.getElementById("table");
 
-    if (result){
+    if (result !== undefined) {
+      if (result){
         table.classList.remove("appear");
-      }else{
-      table.classList.add("appear");
+      } else {
+        table.classList.add("appear");
     }
+    }
+    
 });
 
 // Check the URL
-if (window.location.href.includes("home.php")) {
+if (window.location.href.includes("index.php")) {
   var pageType = "H";
 } else if (window.location.href.includes("about.php")) {
   var pageType = "A";
 } else if (window.location.href.includes("contact.php")) {
   var pageType = "C";
+} else {
+  var pageType = "none";
 }
 
 // send parameter to change password for accurate re-direction of user
-$(document).ready(function() {
-  $("#forgotBtn").click(function(event) {
-      // Convert the array to JSON string
-      var from = JSON.stringify(pageType);
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('forgotBtn').addEventListener('click', function() {
+    var from = JSON.stringify(pageType);
                 
+    if (pageType == "H" || pageType == "none") {
       // Construct the URL with the JSON string as a parameter
-      var url = "./changePass.html?from=" + encodeURIComponent(from);
+      var url = "Front End/changePass.html?from=" + encodeURIComponent(from);
+    } else {
+      // Construct the URL with the JSON string as a parameter
+      var url = "changePass.html?from=" + encodeURIComponent(from);
+    }
+    
+    // Navigate to the constructed URL
+    window.location.href = url;
 
-      // Navigate to the constructed URL
-      window.location.href = url;
   });
 });
+
+//   $("#forgotBtn").click(function(event) {
+//       // Convert the array to JSON string
+//       var from = JSON.stringify(pageType);
+                
+//       // Construct the URL with the JSON string as a parameter
+//       var url = "./changePass.html?from=" + encodeURIComponent(from);
+
+//       // Navigate to the constructed URL
+//       window.location.href = url;
+//   });
+// });

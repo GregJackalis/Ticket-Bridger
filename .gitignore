@@ -1,3 +1,6 @@
 .DS_Store
 .vscode
 temp.txt
+.htaccess
+Classified/database.env
+

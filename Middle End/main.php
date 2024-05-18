@@ -16,6 +16,10 @@ error_reporting(E_ALL);
 ini_set('log_errors', 1);
 ini_set('error_log', 'error.log');
 
+header("Access-Control-Allow-Origin: http://localhost");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 include 'functions.php';
 include 'get_env.php';
 
@@ -57,16 +61,22 @@ if ($db_connection == false) {
     $response["message"] = "Connected to database!";
 }
 
+$data = json_decode(file_get_contents('php://input'), true);
+// header('Content-Type: application/json');
+// echo json_encode($data['action']);
+// exit;
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection != false) {
 
-    $action = $_POST["action"];
+    $action = $data['action'];
 
     if ($action == "signUpAction") {
         // in case the request method is post then it means that a user is trying to sign up most
         //  defintely (for now at least...)
-        $username = setup_data($_POST["username_R"]);
-        $email = setup_data($_POST["email_R"]);
-        $password = $_POST["password_R"]; // the password's data doesn't need to be in the setup_data because it might affect the
+        $username = setup_data($data["username_R"]);
+        $email = setup_data($data["email_R"]);
+        $password = $data["password_R"]; // the password's data doesn't need to be in the setup_data because it might affect the
         // actual value of the it.
 
         $emailCheck = checkingEmail($email);
@@ -99,8 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection != false) {
             }
         }
     } elseif ($action == "loginAction") {
-        $email = setup_data($_POST["email_L"]);
-        $password = setup_data($_POST["password_L"]);
+        $email = setup_data($data["email_L"]);
+        $password = setup_data($data["password_L"]);
 
         $sqlResponse = get_from_table($email, $password, "users", $db_connection);
 
@@ -124,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $db_connection != false) {
         }
     } else if ($action == "changePass") {
 
-        $infoArr = [ setup_data($_POST["userEmail"]), setup_data($_POST["oldPassword"]), setup_data($_POST["newPassword"]), setup_data($_POST["reEnterPassword"]) ];
+        $infoArr = [ setup_data($data["userEmail"]), setup_data($data["oldPassword"]), setup_data($data["newPassword"]), setup_data($data["reEnterPassword"]) ];
 
         $hasChanged = changePassword($infoArr, $db_connection);
 

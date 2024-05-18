@@ -1,11 +1,16 @@
 <?php
+
+header("Access-Control-Allow-Origin: http://localhost");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 session_start();
 
 if (!isset($_SESSION['loggedIn'])) {
   $_SESSION['loggedIn'] = 'nah';
 }
 
-include 'PHPtoJS.php';
+include './Front End/PHPtoJS.php';
 
 if ($_SESSION['loggedIn'] == 'ye') {
   addClassesIcons();
@@ -20,19 +25,16 @@ if ($_SESSION['loggedIn'] == 'ye') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- LINK FOR AJAX SUPPORT (AKA json_handler.js SCRIPT FOR HANDLING COMMUNICATION) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- ---------------------------------------------------------------------- -->
+  <link rel="stylesheet" href="./Front End/home.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Icons fontawesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" type="text/css" href="footer.css" />
+  <link rel="stylesheet" href="./Front End/footer.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Libre+Baskerville&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="home.css" />
 
   <title>Ticket Bridger</title>
 </head>
@@ -43,12 +45,12 @@ if ($_SESSION['loggedIn'] == 'ye') {
   <header>
     <div class="navBar">
       <div class="logo">
-        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.php';" />
+        <img src="Front End/Images/LogoImage.png" alt="logoImage" onclick="window.location.href='index.php';" />
       </div>
       <ul class="links">
-        <li><a href="home.php">Home</a></li>
-        <li><a href="about.php">About Us</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="Front End/about.php">About Us</a></li>
+        <li><a href="Front End/contact.php">Contact Us</a></li>
       </ul>
       <div class="actionButtons">
         <button class="getStarted">Get Started</button>
@@ -61,34 +63,37 @@ if ($_SESSION['loggedIn'] == 'ye') {
     </div>
 
     <div class="userDropMenu">
-      <li><a href="./editProfile.php">Profile</a></li>
+      <li><a href="Front End/editProfile.php">Profile</a></li>
       <li><a href="#" id="Logout">Logout</a></li>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('#Logout').on('click', function() {
-          $.ajax({
-            url: 'tempLogout.php', // Path to your PHP script to destroy the session
-            method: 'POST',
-            success: function(response) {
-              // Redirect to index.php after session is destroyed
-              window.location.href = 'home.php';
-            },
-            error: function(xhr, status, error) {
-              console.error(xhr.responseText);
-              // Handle error if needed
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('Logout').addEventListener('click', function() {
+          fetch('./Front End/tempLogout.php', {
+            method: 'POST'
+          })
+          .then(response => {
+            if (response.ok) {
+              window.location.href = 'index.php';
+            } else {
+              return response.text().then(text => { throw new Error(text) });
             }
+          })
+          .catch(error => {
+            console.error(error);
+            // Handle error if needed
           });
         });
       });
+
     </script>
 
     <!--dropdown menu-->
     <div class="dropDownMenu">
-      <li><a href="home.php">Home</a></li>
-      <li><a href="about.php">About Us</a></li>
-      <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="index.php">Home</a></li>
+      <li><a href="Front End/about.php">About Us</a></li>
+      <li><a href="Front End/contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>
     </div>
   </header>
@@ -177,19 +182,19 @@ if ($_SESSION['loggedIn'] == 'ye') {
       <input type="radio" name="radio-btn" id="radio5" />
 
       <div class="slide first">
-        <img src="./Images/people-2608316.jpg" alt="" />
+        <img src="Front End/Images/people-2608316.jpg" alt="" />
       </div>
       <div class="slide">
-        <img src="./Images/concert-2527495_1920.jpg" alt="" />
+        <img src="Front End/Images/concert-2527495_1920.jpg" alt="" />
       </div>
       <div class="slide">
-        <img src="./Images/522d43da-6bd5-4bd0-b43f-ee209330316b.jpg" alt="" />
+        <img src="Front End/Images/522d43da-6bd5-4bd0-b43f-ee209330316b.jpg" alt="" />
       </div>
       <div class="slide">
-        <img src="Images/4ad30422-535f-4363-a436-1767c398cfb7.jpg" alt="" />
+        <img src="Front End/Images/4ad30422-535f-4363-a436-1767c398cfb7.jpg" alt="" />
       </div>
       <div class="slide">
-        <img src="./Images/joe-yates-8LJViXSE_V8-unsplash(1).jpg" alt="" />
+        <img src="Front End/Images/joe-yates-8LJViXSE_V8-unsplash(1).jpg" alt="" />
       </div>
 
       <div class="navigation-auto">
@@ -281,10 +286,11 @@ if ($_SESSION['loggedIn'] == 'ye') {
         </thead>
         <tbody>
           <?php
+              // Database connection
               define('DB_SERVER', 'localhost');
-              define('DB_USERNAME', 'kostas');
-              define('DB_PASSWORD', '12345');
-              define('DB_NAME', 'ticketbridger');
+              define('DB_USERNAME', 'smth');
+              define('DB_PASSWORD', 'smth!');
+              define('DB_NAME', 'smth');
               
               $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -311,7 +317,7 @@ if ($_SESSION['loggedIn'] == 'ye') {
                       <td><?= $items['selling_price']?></td>
                       <td><?= $items['number_ticket']?></td>
                       <td><?= $items['kind']?></td>
-                      <td><button class="buy"><a href="./book.php?ticketID=<?php echo $id; ?>">Buy now</a></button>
+                      <td><button class="buy"><a href="Front End/book.php?ticketID=<?php echo $id; ?>">Buy now</a></button>
                       </td>
                     </tr>
                     <?php
@@ -332,8 +338,8 @@ if ($_SESSION['loggedIn'] == 'ye') {
 
   <div class="reselling">
     <div class="container">
-      <img src="./Images/samuel-regan-asante-JjlkGAc4OUM-unsplash.jpg" class="samuel" alt="" />
-      <img src="./Images/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg" class="dylan" alt="" />
+      <img src="Front End/Images/samuel-regan-asante-JjlkGAc4OUM-unsplash.jpg" class="samuel" alt="" />
+      <img src="Front End/Images/dylan-mullins-Ubhjpv7q0Pk-unsplash.jpg" class="dylan" alt="" />
       <p>
         Reselling tickets for
         <span style="font-weight: bold; color: rgb(230, 232, 111)">cinema</span>,
@@ -366,8 +372,8 @@ if ($_SESSION['loggedIn'] == 'ye') {
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
-            <li><a href="about.php">About us</a></li>
-            <li><a href="contact.php">Contact us</a></li>
+            <li><a href="Front End/about.php">About us</a></li>
+            <li><a href="Front End/contact.php">Contact us</a></li>
           </ul>
         </div>
 
@@ -397,8 +403,8 @@ if ($_SESSION['loggedIn'] == 'ye') {
     </div>
   </div>
 
-  <script src="home.js"></script>
-  <script src="json_handler.js"></script>
+  <script src="Front End/home.js"></script>
+  <script src="Front End/json_handler.js"></script>
 </body>
 
 </html>

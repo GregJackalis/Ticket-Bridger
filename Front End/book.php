@@ -13,9 +13,9 @@ require '../phpmailer/src/SMTP.php';
 
 // Database connection
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'kostas');
-define('DB_PASSWORD', '12345');
-define('DB_NAME', 'ticketbridger');
+define('DB_USERNAME', 'smth');
+define('DB_PASSWORD', 'smth!');
+define('DB_NAME', 'smth');
 
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -74,13 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'kostasroulias92@gmail.com';
-        $mail->Password = 'ipit hwtl uuic xdov';
+        $mail->Username = 'ticketbridger@gmail.com';
+        $mail->Password = 'atyq jjic vayh gxvx';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Sender and recipient
-        $mail->setFrom('kostasroulias92@gmail.com', 'Ticket Bridger');
+        $mail->setFrom('ticketbridger@gmail.com', 'Ticket Bridger');
         $mail->addAddress($email, $lastName . ' ' . $name);
 
         // Email content
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Send the email
             $mail->send();
             echo '<script>alert("Email sent successfully!");</script>';
-            echo "<script>window.open('home.php','_self')</script>";
+            echo "<script>window.open('../index.php','_self')</script>";
         } catch (Exception $e) {
             echo '<script>alert("Email could not be sent. Mailer Error: ' . $mail->ErrorInfo . '");</script>';
         }
@@ -138,10 +138,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <header>
         <div class="navBar">
             <div class="logo">
-                <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.php';" />
+                <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='../index.php';" />
             </div>
             <ul class="links">
-                <li><a href="home.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>
@@ -160,19 +160,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            $(document).ready(function() {
-                $('#Logout').on('click', function() {
-                    $.ajax({
-                        url: 'tempLogout.php', // Path to your PHP script to destroy the session
-                        method: 'POST',
-                        success: function(response) {
-                            // Redirect to index.php after session is destroyed
-                            window.location.href = 'home.php';
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr.responseText);
-                            // Handle error if needed
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('Logout').addEventListener('click', function() {
+                    fetch('tempLogout.php', {
+                        method: 'POST'
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                        window.location.href = '../index.php';
+                        } else {
+                        return response.text().then(text => { throw new Error(text) });
                         }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        // Handle error if needed
                     });
                 });
             });

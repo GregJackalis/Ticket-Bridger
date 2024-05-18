@@ -13,9 +13,9 @@ if ($_SESSION['loggedIn'] == 'ye') {
 
 // Database connection
 $servername = "localhost";
-$username = "kostas";
-$password = "12345";
-$dbname = "ticketbridger";
+$username = "smth";
+$password = "smth!";
+$dbname = "smth";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -72,10 +72,10 @@ $conn->close();
   <header>
     <div class="navBar">
       <div class="logo">
-        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='./home.php';" />
+        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='../index.php';" />
       </div>
       <ul class="links">
-        <li><a href="home.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
@@ -94,26 +94,28 @@ $conn->close();
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('#Logout').on('click', function() {
-          $.ajax({
-            url: 'tempLogout.php', // Path to your PHP script to destroy the session
-            method: 'POST',
-            success: function(response) {
-              // Redirect to index.php after session is destroyed
-              window.location.href = 'home.php';
-            },
-            error: function(xhr, status, error) {
-              console.error(xhr.responseText);
-              // Handle error if needed
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('Logout').addEventListener('click', function() {
+          fetch('tempLogout.php', {
+            method: 'POST'
+          })
+          .then(response => {
+            if (response.ok) {
+              window.location.href = '../index.php';
+            } else {
+              return response.text().then(text => { throw new Error(text) });
             }
+          })
+          .catch(error => {
+            console.error(error);
+            // Handle error if needed
           });
         });
       });
     </script>
 
     <div class="dropDownMenu">
-      <li><a href="home.php">Home</a></li>
+      <li><a href="../index.php">Home</a></li>
       <li><a href="about.php">About Us</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>

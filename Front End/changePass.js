@@ -5,8 +5,8 @@ const params = new URLSearchParams(window.location.search);
 const goBack = params.get('from').replace(/"/g, ''); // Remove surrounding quotes
 
 $("#goBackBtn").click(function(event) {
-    if (goBack === "H") {
-        window.location.href = "./home.php";
+    if (goBack === "H" || goBack === "none") {
+        window.location.href = "../index.php";
     } else if (goBack === "A") {
         window.location.href = "./about.php";
     } else if (goBack === "C") {
@@ -20,14 +20,11 @@ $("#goBackBtn").click(function(event) {
 //------------------------------------------------------------------------------------------------------------
 // FUNCTION WHICH HANDLES SUBMIT PROCESS OF THE CHANGE PASSWORD FORM
 //------------------------------------------------------------------------------------------------------------
-$(function() {
-    $("#changePassForm").submit(function(event) {
-        console.log("Form submitted!!");
-        
-        // Prevent the default form submission
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('changePassForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        
-        // Serialize form data
+
         var userEmail = $("#email").val();
         var oldPassword = $("#oldPass").val();
         var newPassword = $("#newPass").val();
@@ -45,21 +42,67 @@ $(function() {
             reEnterPassword: reEnterPassword,
             action: "changePass"
         };
-        
+
         console.log("im almost there");
 
-        // Send data to server using AJAX
-        $.post('../Middle End/main.php', formData, function(response) {
-            // Handle the response from the server
-            console.log(response);
-            showReply(response.message);
-
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            // Handle errors here
-            console.error("Error:", textStatus, errorThrown);
+        fetch('../Middle End/main.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            showReply(data.message);
+        })
+        .catch(error => {
+            console.error("Error:", error);
         });
     });
 });
+
+// $(function() {
+//     $("#changePassForm").submit(function(event) {
+//         console.log("Form submitted!!");
+        
+//         // Prevent the default form submission
+//         event.preventDefault();
+        
+//         // Serialize form data
+//         var userEmail = $("#email").val();
+//         var oldPassword = $("#oldPass").val();
+//         var newPassword = $("#newPass").val();
+//         var reEnterPassword = $("#newPass2").val();
+
+//         // console.log("User Email: " + userEmail);
+//         // console.log("Old Password: " + oldPassword);
+//         // console.log("New Password: " + newPassword);
+//         // console.log("Re-Entered Password: " + reEnterPassword);
+
+//         var formData = {
+//             userEmail: userEmail,
+//             oldPassword: oldPassword,
+//             newPassword: newPassword,
+//             reEnterPassword: reEnterPassword,
+//             action: "changePass"
+//         };
+        
+//         console.log("im almost there");
+
+//         // Send data to server using AJAX
+//         $.post('../Middle End/main.php', formData, function(response) {
+//             // Handle the response from the server
+//             console.log(response);
+//             showReply(response.message);
+
+//         }).fail(function(jqXHR, textStatus, errorThrown) {
+//             // Handle errors here
+//             console.error("Error:", textStatus, errorThrown);
+//         });
+//     });
+// });
 
 //------------------------------------------------------------------------------------------------------------
 // SHOW APPROPRIATE REPLY BASED ON BACK END'S RESPONSE
@@ -114,8 +157,8 @@ function showReply(reply) {
         btnAppear.textContent = "Go Back to Previous Page";
 
         btnAppear.addEventListener('click', function() {
-            if (goBack === "H") {
-                window.location.href = "./home.php";
+            if (goBack === "H" || goBack === "none") {
+                window.location.href = "../index.php";
             } else if (goBack === "A") {
                 window.location.href = "./about.php";
             } else if (goBack === "C") {

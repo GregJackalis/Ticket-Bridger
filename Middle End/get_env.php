@@ -29,16 +29,32 @@ function get_env_data($type)
         $value = trim($value);
 
         // Set the environment variable
-        putenv("$key=$value");
+        // putenv("$key=$value");
+
+        $env_variables[$key] = $value;
+
     }
 
+    // if ($type == 'db') {
+    //     // Now you can access your variables
+    //     $server = getenv('SERVERNAME');
+    //     $user = getenv('DB_USERNAME');
+    //     $password = getenv('DB_PASSWORD');
+    //     $name = getenv('DB_NAME');
+
+    //     return array($server, $user, $password, $name);
+    // }
+
     if ($type == 'db') {
-        // Now you can access your variables
-        $server = getenv('SERVERNAME');
-        $user = getenv('DB_USERNAME');
-        $password = getenv('DB_PASSWORD');
-        $name = getenv('DB_NAME');
+        // Now you can access your variables from the array
+        $server = isset($env_variables['SERVERNAME']) ? $env_variables['SERVERNAME'] : '';
+        $user = isset($env_variables['DB_USERNAME']) ? $env_variables['DB_USERNAME'] : '';
+        $password = isset($env_variables['DB_PASSWORD']) ? $env_variables['DB_PASSWORD'] : '';
+        $name = isset($env_variables['DB_NAME']) ? $env_variables['DB_NAME'] : '';
 
         return array($server, $user, $password, $name);
     }
+
+    // Return an empty array if the type is not recognized
+    return [];
 }
