@@ -10,9 +10,9 @@ var errMessage = false; // this is used in order to check whether the message is
 
 // FOR SIGN UP
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('submitBtn').addEventListener('click', function(event) {
+    document.getElementById('submitBtn').addEventListener('click', async function(event) {
         console.log("register button pressed!!");
-
+        
         newEl.innerHTML = ""; // Clear previous content
         event.preventDefault();
 
@@ -23,17 +23,30 @@ document.addEventListener('DOMContentLoaded', function() {
         var jsonString = JSON.stringify(formDataObject);
         console.log(jsonString);
 
-        // Send data to server using fetch
-        fetch('../Middle End/main.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: jsonString
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); // Log response for debugging
+        try {
+            // Send data to server using fetch
+            const response = await fetch('../Middle End/main.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonString
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const responseData = await response.text();
+            console.log(responseData); // Log response for debugging
+
+            const data = JSON.parse(responseData);
+
+            console.log(data.status);
+
+
+            // var backRes = JSON.parse(response.text);
+            // console.log(backRes);
 
             if (data.status === 'register success') {
                 newEl.innerHTML = '<p class="popup-font">Registered Successfully!</p>';
@@ -42,21 +55,24 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 newEl.innerHTML = '<p class="popup-font">Email must be of valid type!<br>';
                 newEl.innerHTML += 'Password must contain at least a number, an uppercase character,';
-                newEl.innerHTML += ' a lowercase character, a special character, and its length <br>to be more than 8 characters.</p>';
-                newEl.innerHTML += ' <br> If all the previous is done then email Already used.</p>';
+                newEl.innerHTML += ' a lowercase character, a special character, and its length <br>to be more than 8 characters. <br>';
+                newEl.innerHTML += ' Only english characters, underscore, and dashes are allowed on the username. </p>';
                 phpElement.classList.add('error-message');
                 errMessage = true;
             }
             phpElement.appendChild(newEl);
-        })
-        .catch(error => {
+        } catch (error) {
             console.error("Error:", error);
-        });
+            newEl.innerHTML = `<p class="popup-font">An error occurred: ${error.message}</p>`;
+            phpElement.classList.add('error-message');
+            phpElement.appendChild(newEl);
+        }
 
         phpElement.classList.add('active');
         phpElement.classList.add('active-popup');
     });
 });
+
 
 
 
@@ -108,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // FOR LOGIN
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('loginBtn').addEventListener('click', function(event) {
-        console.log("login button pressed!!");
+    document.getElementById('loginBtn').addEventListener('click', async function(event) {
+        console.log("login button pressed!!")
 
         newEl.innerHTML = ""; // Clear previous content
         event.preventDefault();
@@ -121,38 +137,41 @@ document.addEventListener('DOMContentLoaded', function() {
         var jsonString = JSON.stringify(formDataObject);
         console.log(jsonString);
 
-        // Send data to server using fetch
-        fetch('../Middle End/main.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: jsonString
-        })
-        .then(response => response.json())
-        .then(data => {
+        try {
+            // Send data to server using fetch
+            const response = await fetch('../Middle End/main.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonString
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const responseData = await response.text();
+
+            const data = JSON.parse(responseData);
+
             console.log(data); // Log response for debugging
-            
+
             if (data.status === 'missing cred error') {
                 newEl.innerHTML = '<p class="popup-font">Missing Credentials!</p>';
                 phpElement.classList.add('message');
-
             } else if (data.status === 'no records') {
                 newEl.innerHTML = '<p class="popup-font">No records with that email found!</p>';
                 phpElement.classList.add('message');
-
             } else if (data.status === "login error") {
                 newEl.innerHTML = '<p class="popup-font">Invalid Credentials!</p>';
                 phpElement.classList.add('message');
                 errMessage = true;
-
             } else if (data.status === 'login success') {
                 newEl.innerHTML = `<p class="popup-font">Welcome back, ${data.message}!</p>`;
                 phpElement.classList.add('message');
-                
                 usericon.classList.add('active');
                 sellButton.classList.add('active');
-
                 closeGetStarted.forEach(function(el){
                     el.classList.add('close');
                 });
@@ -160,10 +179,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } 
 
             phpElement.appendChild(newEl);
-        })
-        .catch(error => {
+        } catch (error) {
             console.error("Error:", error);
-        });
+            // Handle errors here
+        }
 
         phpElement.classList.add('active');
         phpElement.classList.add('active-popup');
