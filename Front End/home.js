@@ -96,15 +96,27 @@ if (window.location.href.includes("home.php")) {
 }
 
 // send parameter to change password for accurate re-direction of user
-$(document).ready(function() {
-  $("#forgotBtn").click(function(event) {
-      // Convert the array to JSON string
-      var from = JSON.stringify(pageType);
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('forgotBtn').addEventListener('click', function() {
+    var from = JSON.stringify(pageType);
                 
-      // Construct the URL with the JSON string as a parameter
-      var url = "./changePass.html?from=" + encodeURIComponent(from);
+    // Construct the URL with the JSON string as a parameter
+    var url = "./changePass.html?from=" + encodeURIComponent(from);
 
-      // Navigate to the constructed URL
-      window.location.href = url;
+    // Navigate to the constructed URL
+    window.location.href = url;
+
   });
 });
+
+//   $("#forgotBtn").click(function(event) {
+//       // Convert the array to JSON string
+//       var from = JSON.stringify(pageType);
+                
+//       // Construct the URL with the JSON string as a parameter
+//       var url = "./changePass.html?from=" + encodeURIComponent(from);
+
+//       // Navigate to the constructed URL
+//       window.location.href = url;
+//   });
+// });

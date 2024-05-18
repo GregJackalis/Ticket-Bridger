@@ -66,22 +66,25 @@ if ($_SESSION['loggedIn'] == 'ye') {
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('#Logout').on('click', function() {
-          $.ajax({
-            url: 'tempLogout.php', // Path to your PHP script to destroy the session
-            method: 'POST',
-            success: function(response) {
-              // Redirect to index.php after session is destroyed
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('Logout').addEventListener('click', function() {
+          fetch('tempLogout.php', {
+            method: 'POST'
+          })
+          .then(response => {
+            if (response.ok) {
               window.location.href = 'home.php';
-            },
-            error: function(xhr, status, error) {
-              console.error(xhr.responseText);
-              // Handle error if needed
+            } else {
+              return response.text().then(text => { throw new Error(text) });
             }
+          })
+          .catch(error => {
+            console.error(error);
+            // Handle error if needed
           });
         });
       });
+
     </script>
 
     <!--dropdown menu-->

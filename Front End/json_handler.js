@@ -9,112 +9,245 @@ var errMessage = false; // this is used in order to check whether the message is
 // so that the appropriate class will be used
 
 // FOR SIGN UP
-$(function() {
-    $("#submitBtn").click(function(event) {
-        console.log("register button pressed!!")
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('submitBtn').addEventListener('click', function(event) {
+        console.log("register button pressed!!");
 
         newEl.innerHTML = ""; // Clear previous content
         event.preventDefault();
 
         // Serialize form data
-        var formData = $("#signUpForm").serialize();
-        console.log(formData);
+        var formData = new FormData(document.getElementById('signUpForm'));
+        var formDataObject = {};
+        formData.forEach((value, key) => { formDataObject[key] = value; });
+        var jsonString = JSON.stringify(formDataObject);
+        console.log(jsonString);
 
-        // Send data to server using AJAX
-        $.post('../Middle End/main.php', formData, function(response) {
-            console.log(response); // Log response for debugging
+        // Send data to server using fetch
+        fetch('../Middle End/main.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonString
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log response for debugging
 
-            if (response.status == 'register success') {
+            if (data.status === 'register success') {
                 newEl.innerHTML = '<p class="popup-font">Registered Successfully!</p>';
                 phpElement.classList.add('message');
                 phpElement.classList.remove('active');
             } else {
-                // var header = document.createElement('h2');
-                // header.innerHTML = "Errors while Signing up:<br>";
-                // phpElement.appendChild(header);
-                // newEl.innerHTML = "<p>" + response.message + "</p><br>";
-                // for (var key in response.errors) {
-                //     if (response.errors.hasOwnProperty(key) && response.errors[key] !== null) {
-                //         newEl.innerHTML += "<p>" + response.errors[key] + "</p><br>";
-                //     }
-                // }
                 newEl.innerHTML = '<p class="popup-font">Email must be of valid type!<br>';
-                newEl.innerHTML += 'Password must contain at least a number, an uppercase character,'
+                newEl.innerHTML += 'Password must contain at least a number, an uppercase character,';
                 newEl.innerHTML += ' a lowercase character, a special character, and its length <br>to be more than 8 characters.</p>';
                 newEl.innerHTML += ' <br> If all the previous is done then email Already used.</p>';
                 phpElement.classList.add('error-message');
                 errMessage = true;
             }
             phpElement.appendChild(newEl);
+        })
+        .catch(error => {
+            console.error("Error:", error);
         });
+
         phpElement.classList.add('active');
         phpElement.classList.add('active-popup');
     });
 });
 
+
+
+
+// $(function() {
+//     $("#submitBtn").click(function(event) {
+//         console.log("register button pressed!!")
+
+//         newEl.innerHTML = ""; // Clear previous content
+//         event.preventDefault();
+
+//         // Serialize form data
+//         var formData = $("#signUpForm").serialize();
+//         console.log(formData);
+
+//         // Send data to server using AJAX
+//         $.post('../Middle End/main.php', formData, function(response) {
+//             console.log(response); // Log response for debugging
+
+//             if (response.status == 'register success') {
+//                 newEl.innerHTML = '<p class="popup-font">Registered Successfully!</p>';
+//                 phpElement.classList.add('message');
+//                 phpElement.classList.remove('active');
+//             } else {
+//                 // var header = document.createElement('h2');
+//                 // header.innerHTML = "Errors while Signing up:<br>";
+//                 // phpElement.appendChild(header);
+//                 // newEl.innerHTML = "<p>" + response.message + "</p><br>";
+//                 // for (var key in response.errors) {
+//                 //     if (response.errors.hasOwnProperty(key) && response.errors[key] !== null) {
+//                 //         newEl.innerHTML += "<p>" + response.errors[key] + "</p><br>";
+//                 //     }
+//                 // }
+//                 newEl.innerHTML = '<p class="popup-font">Email must be of valid type!<br>';
+//                 newEl.innerHTML += 'Password must contain at least a number, an uppercase character,'
+//                 newEl.innerHTML += ' a lowercase character, a special character, and its length <br>to be more than 8 characters.</p>';
+//                 newEl.innerHTML += ' <br> If all the previous is done then email Already used.</p>';
+//                 phpElement.classList.add('error-message');
+//                 errMessage = true;
+//             }
+//             phpElement.appendChild(newEl);
+//         });
+//         phpElement.classList.add('active');
+//         phpElement.classList.add('active-popup');
+//     });
+// });
+
 // ----------------------------------------------------------------------------------------------------------------------------
 
 // FOR LOGIN
-$(function() {
-    $("#loginBtn").click(function(event) {
-        console.log("login button pressed!!")
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('loginBtn').addEventListener('click', function(event) {
+        console.log("login button pressed!!");
 
         newEl.innerHTML = ""; // Clear previous content
         event.preventDefault();
 
         // Serialize form data
-        var formData = $("#loginForm").serialize();
-        console.log(formData)
+        var formData = new FormData(document.getElementById('loginForm'));
+        var formDataObject = {};
+        formData.forEach((value, key) => { formDataObject[key] = value; });
+        var jsonString = JSON.stringify(formDataObject);
+        console.log(jsonString);
 
-        // Send data to server using AJAX
-        $.post('../Middle End/main.php', formData, function(response) {
-            console.log(response); // Log response for debugging
+        // Send data to server using fetch
+        fetch('../Middle End/main.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonString
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Log response for debugging
             
-            if (response.status == 'missing cred error') {
+            if (data.status === 'missing cred error') {
                 newEl.innerHTML = '<p class="popup-font">Missing Credentials!</p>';
                 phpElement.classList.add('message');
 
-            } else if (response.status == 'no records') {
-                    newEl.innerHTML = '<p class="popup-font">No records with that email found!</p>';
-                    phpElement.classList.add('message');
+            } else if (data.status === 'no records') {
+                newEl.innerHTML = '<p class="popup-font">No records with that email found!</p>';
+                phpElement.classList.add('message');
 
-            } else if (response.status == "login error") {
+            } else if (data.status === "login error") {
                 newEl.innerHTML = '<p class="popup-font">Invalid Credentials!</p>';
                 phpElement.classList.add('message');
                 errMessage = true;
 
-                // FOR SUCCESS CASE IN LOGIN PHASE
-            } else if (response.status == 'login success') {
-                newEl.innerHTML = `<p class="popup-font">Welcome back, ${response.message}!</p>`;
+            } else if (data.status === 'login success') {
+                newEl.innerHTML = `<p class="popup-font">Welcome back, ${data.message}!</p>`;
                 phpElement.classList.add('message');
                 
                 usericon.classList.add('active');
                 sellButton.classList.add('active');
 
                 closeGetStarted.forEach(function(el){
-
                     el.classList.add('close');
-
                 });
                 removeActive();
-               
             } 
 
             phpElement.appendChild(newEl);
+        })
+        .catch(error => {
+            console.error("Error:", error);
         });
+
         phpElement.classList.add('active');
         phpElement.classList.add('active-popup');
     });
 });
 
-$('.icon-close').click(()=> {
-    phpElement.classList.remove('active');
-    phpElement.classList.remove('active-popup');
-    if (errMessage == true) {
-        errMessage = false;
-        phpElement.classList.remove('error-message');
-    } else {
-        phpElement.classList.remove('message');
-    }
-  });
+
+// FOR CLOSE BUTTON ON LOGIN/REGISTER FORMS
+document.querySelectorAll('.icon-close').forEach(function(closeButton) {
+    closeButton.addEventListener('click', function() {
+        phpElement.classList.remove('active');
+        phpElement.classList.remove('active-popup');
+        if (errMessage) {
+            errMessage = false;
+            phpElement.classList.remove('error-message');
+        } else {
+            phpElement.classList.remove('message');
+        }
+    });
+});
+
+
+
+
+// $(function() {
+//     $("#loginBtn").click(function(event) {
+//         console.log("login button pressed!!")
+
+//         newEl.innerHTML = ""; // Clear previous content
+//         event.preventDefault();
+
+//         // Serialize form data
+//         var formData = $("#loginForm").serialize();
+//         console.log(formData)
+
+//         // Send data to server using AJAX
+//         $.post('../Middle End/main.php', formData, function(response) {
+//             console.log(response); // Log response for debugging
+            
+//             if (response.status == 'missing cred error') {
+//                 newEl.innerHTML = '<p class="popup-font">Missing Credentials!</p>';
+//                 phpElement.classList.add('message');
+
+//             } else if (response.status == 'no records') {
+//                     newEl.innerHTML = '<p class="popup-font">No records with that email found!</p>';
+//                     phpElement.classList.add('message');
+
+//             } else if (response.status == "login error") {
+//                 newEl.innerHTML = '<p class="popup-font">Invalid Credentials!</p>';
+//                 phpElement.classList.add('message');
+//                 errMessage = true;
+
+//                 // FOR SUCCESS CASE IN LOGIN PHASE
+//             } else if (response.status == 'login success') {
+//                 newEl.innerHTML = `<p class="popup-font">Welcome back, ${response.message}!</p>`;
+//                 phpElement.classList.add('message');
+                
+//                 usericon.classList.add('active');
+//                 sellButton.classList.add('active');
+
+//                 closeGetStarted.forEach(function(el){
+
+//                     el.classList.add('close');
+
+//                 });
+//                 removeActive();
+               
+//             } 
+
+//             phpElement.appendChild(newEl);
+//         });
+//         phpElement.classList.add('active');
+//         phpElement.classList.add('active-popup');
+//     });
+// });
+
+// $('.icon-close').click(()=> {
+//     phpElement.classList.remove('active');
+//     phpElement.classList.remove('active-popup');
+//     if (errMessage == true) {
+//         errMessage = false;
+//         phpElement.classList.remove('error-message');
+//     } else {
+//         phpElement.classList.remove('message');
+//     }
+//   });
   
