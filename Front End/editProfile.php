@@ -72,10 +72,10 @@ $conn->close();
   <header>
     <div class="navBar">
       <div class="logo">
-        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='./home.php';" />
+        <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='../index.php';" />
       </div>
       <ul class="links">
-        <li><a href="home.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php">Contact Us</a></li>
       </ul>
@@ -101,7 +101,7 @@ $conn->close();
           })
           .then(response => {
             if (response.ok) {
-              window.location.href = 'home.php';
+              window.location.href = '../index.php';
             } else {
               return response.text().then(text => { throw new Error(text) });
             }
@@ -115,7 +115,7 @@ $conn->close();
     </script>
 
     <div class="dropDownMenu">
-      <li><a href="home.php">Home</a></li>
+      <li><a href="../index.php">Home</a></li>
       <li><a href="about.php">About Us</a></li>
       <li><a href="contact.php">Contact Us</a></li>
       <button class="getStarted">Get Started</button>

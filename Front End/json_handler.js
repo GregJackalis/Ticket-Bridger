@@ -23,9 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
         var jsonString = JSON.stringify(formDataObject);
         console.log(jsonString);
 
+        if (window.location.href.includes("index.php") || window.location.href.includes("")) {
+            var url = "Middle End/main.php";
+        } else {
+            var url = "../Middle End/main.php";
+        }
+
         try {
             // Send data to server using fetch
-            const response = await fetch('../Middle End/main.php', {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -137,9 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
         var jsonString = JSON.stringify(formDataObject);
         console.log(jsonString);
 
+        if (window.location.href.includes("index.php") || window.location.href.includes("")) {
+            var url = "Middle End/main.php";
+        } else {
+            var url = "../Middle End/main.php";
+        }
+
         try {
             // Send data to server using fetch
-            const response = await fetch('../Middle End/main.php', {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

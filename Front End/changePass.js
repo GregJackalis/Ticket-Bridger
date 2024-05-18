@@ -5,8 +5,8 @@ const params = new URLSearchParams(window.location.search);
 const goBack = params.get('from').replace(/"/g, ''); // Remove surrounding quotes
 
 $("#goBackBtn").click(function(event) {
-    if (goBack === "H") {
-        window.location.href = "./home.php";
+    if (goBack === "H" || goBack === "none") {
+        window.location.href = "../index.php";
     } else if (goBack === "A") {
         window.location.href = "./about.php";
     } else if (goBack === "C") {
@@ -21,7 +21,7 @@ $("#goBackBtn").click(function(event) {
 // FUNCTION WHICH HANDLES SUBMIT PROCESS OF THE CHANGE PASSWORD FORM
 //------------------------------------------------------------------------------------------------------------
 
-ocument.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('changePassForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
@@ -157,8 +157,8 @@ function showReply(reply) {
         btnAppear.textContent = "Go Back to Previous Page";
 
         btnAppear.addEventListener('click', function() {
-            if (goBack === "H") {
-                window.location.href = "./home.php";
+            if (goBack === "H" || goBack === "none") {
+                window.location.href = "../index.php";
             } else if (goBack === "A") {
                 window.location.href = "./about.php";
             } else if (goBack === "C") {

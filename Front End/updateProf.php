@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Update session username if username is updated
         $_SESSION['username'] = $newUsername;
         echo "<script>alert('Profile updated successfully.');</script>";
-        echo "<script>window.open('home.php', '_self');</script>";
+        echo "<script>window.open('../index.php', '_self');</script>";
       } else {
         echo "Error updating profile: " . $conn->error;
       }

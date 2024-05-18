@@ -74,13 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'kostasroulias92@gmail.com';
-        $mail->Password = 'ipit hwtl uuic xdov';
+        $mail->Username = 'ticketbridger@gmail.com';
+        $mail->Password = 'atyq jjic vayh gxvx';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         // Sender and recipient
-        $mail->setFrom('kostasroulias92@gmail.com', 'Ticket Bridger');
+        $mail->setFrom('ticketbridger@gmail.com', 'Ticket Bridger');
         $mail->addAddress($email, $lastName . ' ' . $name);
 
         // Email content
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Send the email
             $mail->send();
             echo '<script>alert("Email sent successfully!");</script>';
-            echo "<script>window.open('home.php','_self')</script>";
+            echo "<script>window.open('../index.php','_self')</script>";
         } catch (Exception $e) {
             echo '<script>alert("Email could not be sent. Mailer Error: ' . $mail->ErrorInfo . '");</script>';
         }
@@ -138,10 +138,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <header>
         <div class="navBar">
             <div class="logo">
-                <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='home.php';" />
+                <img src="Images/LogoImage.png" alt="logoImage" onclick="window.location.href='../index.php';" />
             </div>
             <ul class="links">
-                <li><a href="home.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="contact.php">Contact Us</a></li>
             </ul>
@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     })
                     .then(response => {
                         if (response.ok) {
-                        window.location.href = 'home.php';
+                        window.location.href = '../index.php';
                         } else {
                         return response.text().then(text => { throw new Error(text) });
                         }
